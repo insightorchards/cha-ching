@@ -1,5 +1,11 @@
 .header {
   text-align: center;
+  padding-bottom: 20px;
+}
+
+.paymentElementContainer {
+  display: flex;
+  justify-content: center;
 }
 
 /* @keyframes App-logo-spin {
