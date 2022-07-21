@@ -1,10 +1,13 @@
 {
   "name": "server",
+  "jest": {
+    "type": "module"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/*.js jest",
+    "test": "jest",
     "test:watch": "jest --watch",
     "start": "node app.js"
   },
