@@ -4,22 +4,21 @@ import { PaymentElement } from "@stripe/react-stripe-js";
 
 import "./App.css";
 
-const stripePromise = loadStripe(
-  "pk_test_51LN2YSDXZ2nrCEJAoQsVYTK57pNjgCcaXzd3SQKlI41uKS0C5l4IDZXPMd4auY5dJuJFChCQzEMUliwD82kpBv1x00C1E0BuBJ",
-);
-console.log(stripePromise);
+const stripePromise = loadStripe("");
+console.log(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
 function App() {
   const options = {
-    // passing the client secret obtained from the server
-    clientSecret: "{{'hallo'}}",
+    clientSecret: "",
   };
   return (
     <div>
       <div className="header">This is Cha-ching</div>
-      <Elements options={options} stripe={stripePromise}>
-        <PaymentElement />
-      </Elements>
+      <div className="paymentElementContainer">
+        <Elements options={options} stripe={stripePromise}>
+          <PaymentElement />
+        </Elements>
+      </div>
     </div>
   );
 }
