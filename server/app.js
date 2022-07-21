@@ -1,11 +1,14 @@
-const express = require('express')
-const app = module.exports = express()
-const port = 3001
+const app = require("./server.js");
+const port = 3001;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.get("/test", async (req, res) => {
+  res.json({ message: "pass!" });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
