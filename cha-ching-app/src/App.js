@@ -13,7 +13,7 @@ function App() {
   };
   return (
     <div>
-      <div className="header">This is Cha-ching</div>
+      <div className="header">Cha-ching</div>
       <div className="paymentElementContainer">
         <Elements options={options} stripe={stripePromise}>
           <PaymentElement />
