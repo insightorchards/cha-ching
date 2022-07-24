@@ -2,9 +2,7 @@ import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import "./App.css";
 
-const stripePromise = loadStripe(
-  "insert your public stripe key here please",
-);
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
 function App() {
   const options = {
@@ -12,8 +10,10 @@ function App() {
   };
 
   function GetClientSecret() {
-    fetch("http://localhost:3001/payment-intent").then(res => res.json()).then(data => console.log(data))
-  };
+    fetch("http://localhost:3001/payment-intent")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }
 
   return (
     <div>
@@ -24,7 +24,9 @@ function App() {
             <PaymentElement />
           </Elements>
         </div>
-        <button onClick={() => GetClientSecret()} className="button">Submit</button>
+        <button onClick={() => GetClientSecret()} className="button">
+          Submit
+        </button>
       </div>
     </div>
   );
