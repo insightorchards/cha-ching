@@ -3,14 +3,18 @@ import { loadStripe } from "@stripe/stripe-js";
 import "./App.css";
 
 const stripePromise = loadStripe(
-  "pk_test_51K4emKJTWDcODaWbHcExGLMnxkY84sL0HI0oLmLQu5uThh7oVAnKbKSMbYlihkZ0JUSyb5XqUJAk5TB0ABUdewkh00YSfzUf4v",
+  "insert your public stripe key here please",
 );
-console.log(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
-async function App() {
+function App() {
   const options = {
-    clientSecret: "pi",
+    clientSecret: "insert client secret here please",
   };
+
+  function GetClientSecret() {
+    fetch("http://localhost:3001/payment-intent").then(res => res.json()).then(data => console.log(data))
+  };
+
   return (
     <div>
       <div className="header">Cha-ching</div>
@@ -20,7 +24,7 @@ async function App() {
             <PaymentElement />
           </Elements>
         </div>
-        <button className="button">Submit</button>
+        <button onClick={() => GetClientSecret()} className="button">Submit</button>
       </div>
     </div>
   );

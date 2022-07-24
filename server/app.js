@@ -1,7 +1,10 @@
 const app = require("./server.js");
 const port = 3001;
 const express = require("express");
-const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
+const stripe = require("stripe")("sk_test_51LN2YeBCMffvlHFGOvFy1V7UITkE6wTccAIaz4FPAIz0AH05VtXIgYuuyurCkiQWUvHNpxfTBp9eJSqbmkTdnVBx00UD3XfpiT");
+const cors = require("cors");
+
+app.use(cors())
 
 // Might be useful in the future
 // app.use(express.json());
@@ -20,7 +23,8 @@ app.get("/payment-intent", async (req, res) => {
     amount: 2000,
     currency: "usd",
   });
-  res.send(paymentIntent);
+  res.json({ clientSecret: paymentIntent.client_secret });
+  console.log("Payment Intent", paymentIntent)
 });
 
 app.post("/", (req, res) => {
