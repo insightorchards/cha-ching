@@ -1,10 +1,12 @@
 const app = require("./server.js");
 const port = 3001;
 const express = require("express");
-const stripe = require("stripe")("secret key goes here");
+const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 const cors = require("cors");
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
-app.use(cors())
+app.use(cors());
 
 // Might be useful in the future
 // app.use(express.json());
@@ -24,7 +26,7 @@ app.get("/payment-intent", async (req, res) => {
     currency: "usd",
   });
   res.json({ clientSecret: paymentIntent.client_secret });
-  console.log("Payment Intent", paymentIntent)
+  console.log("Payment Intent", paymentIntent);
 });
 
 app.post("/", (req, res) => {
