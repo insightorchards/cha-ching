@@ -18,18 +18,34 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ postName: "React updates " }),
+    };
+
+    fetch("http://localhost:3001/", requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   return !isEmpty(options) ? (
     <div>
       <div className="header">Cha-ching</div>
       <div className="paymentFormContainer">
-        <div className="paymentElementcontainer">
-          <Elements options={options} stripe={stripePromise}>
-            <PaymentElement />
-          </Elements>
-        </div>
-        <button onClick={() => {}} className="button">
-          Submit
-        </button>
+        <form id="payment-form">
+          <div className="paymentElementcontainer">
+            <Elements options={options} stripe={stripePromise}>
+              <PaymentElement />
+            </Elements>
+          </div>
+          <button onClick={() => {}} className="button">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   ) : (

@@ -1,18 +1,32 @@
 const app = require("./server.js");
+const express = require("express");
 const port = 3001;
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
-  res.send({
-    msg: "Hello",
-    user: {},
+  res.json({ juice: "beatle juice" });
+});
+
+app.get("/success", (req, res) => {
+  res.send("Success!");
+});
+
+app.get("/confirm-payment", async (req, res) => {
+  const confirmPayment = await stripe.confirmPayment({
+    elements: stripe.elements({
+      clientSecret: "insert clientSecret",
+    }),
+    confirmParams: {
+      return_url: "https://localhost:3001/success",
+    },
   });
+  console.log({ confirmPayment });
 });
 
 app.get("/payment-intent", async (req, res) => {
@@ -21,12 +35,11 @@ app.get("/payment-intent", async (req, res) => {
     currency: "usd",
   });
   res.json({ clientSecret: paymentIntent.client_secret });
-  console.log("Payment Intent", paymentIntent);
 });
 
 app.post("/", (req, res) => {
-  res.send("Palm Tree");
-  console.log(req.body);
+  res.json({ drink: "banana soda" });
+  console.log("POST REQUEST BODY", req.body);
 });
 
 app.get("/test", async (req, res) => {
