@@ -10,7 +10,7 @@ function App() {
 
   const isEmpty = (object) => Object.keys(object).length === 0;
 
-  async function GetClientSecret() {
+  function getClientSecret() {
     fetch("http://localhost:3001/payment-intent")
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +31,7 @@ function App() {
             "loading"
           )}
         </div>
-        <button onClick={() => GetClientSecret()} className="button">
+        <button onClick={() => getClientSecret()} className="button">
           Submit
         </button>
       </div>
