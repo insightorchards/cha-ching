@@ -1,16 +1,11 @@
 const app = require("./server.js");
 const port = 3001;
-const express = require("express");
-const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
+const stripe = require("stripe")(process.env.SECRET_STRIPE_KEY);
 
 app.use(cors());
-
-// Might be useful in the future
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
