@@ -4,6 +4,8 @@ import { useEffect } from "react";
 function CheckoutForm() {
     const stripe = useStripe()
     const elements = useElements()
+    console.log("stripe", stripe)
+    console.log("elements", elements)
     useEffect(() => {
       const requestOptions = {
         method: "POST",
@@ -18,19 +20,21 @@ function CheckoutForm() {
         });
     }, []);
 
-    async function confirmPayment() {
+    async function handleSubmit() {
         console.log("we are in confirmPayment function")
         await stripe.confirmPayment({
              elements,
              confirmParams: {
                  return_url: "https://localhost:3000/success",
              },
-         }).then(data => console.log("What am I (data):", data))
+         })
+            .then(data => console.log("What am I (data):", data))
+            .catch(err => console.log("Something went wrong confirming the payment:", err))
      }
 
     useEffect(() => {
         console.log("we are in confirmPayment useEffect")
-        confirmPayment()
+        handleSubmit()
     }, []);
   
     return (
