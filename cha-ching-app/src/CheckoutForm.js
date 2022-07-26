@@ -1,8 +1,9 @@
-import { PaymentElement } from "@stripe/react-stripe-js";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useEffect } from "react";
 
 function CheckoutForm() {
-  
+    const stripe = useStripe()
+    const elements = useElements()
     useEffect(() => {
       const requestOptions = {
         method: "POST",
@@ -15,6 +16,21 @@ function CheckoutForm() {
         .then((data) => {
           console.log(data);
         });
+    }, []);
+
+    async function confirmPayment() {
+        console.log("we are in confirmPayment function")
+        await stripe.confirmPayment({
+             elements,
+             confirmParams: {
+                 return_url: "https://localhost:3000/success",
+             },
+         }).then(data => console.log("What am I (data):", data))
+     }
+
+    useEffect(() => {
+        console.log("we are in confirmPayment useEffect")
+        confirmPayment()
     }, []);
   
     return (
