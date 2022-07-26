@@ -17,18 +17,6 @@ app.get("/success", (req, res) => {
   res.send("Success!");
 });
 
-app.get("/confirm-payment", async (req, res) => {
-  const confirmPayment = await stripe.confirmPayment({
-    elements: stripe.elements({
-      clientSecret: "insert clientSecret",
-    }),
-    confirmParams: {
-      return_url: "https://localhost:3001/success",
-    },
-  });
-  console.log({ confirmPayment });
-});
-
 app.get("/payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 2000,
