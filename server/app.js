@@ -1,6 +1,5 @@
 const app = require("./server.js")
 const express = require("express")
-// const app = express()
 const port = 3001
 const cors = require("cors")
 const path = require("path")
@@ -12,7 +11,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
 app.get("/", (req, res) => {
-  res.json({ juice: "beatle juice" })
+  res.json({ test: "hello world!" })
 })
 
 app.get("/success", (req, res) => {
@@ -27,13 +26,19 @@ app.get("/payment-intent", async (req, res) => {
   res.json({ clientSecret: paymentIntent.client_secret })
 })
 
+app.post("/payment-intent", async (req, res) => {
+  console.log("I was run!!!! I ran I ran so far awayyyyy!")
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: req.body.amount || 500,
+    currency: "usd",
+  })
+  // handle and return error if paymentIntents.create errors out or there's no req.body.amount
+  res.json(paymentIntent)
+})
+
 app.post("/", (req, res) => {
   res.json({ drink: "banana soda" })
   console.log("POST REQUEST BODY", req.body)
-})
-
-app.get("/test", async (req, res) => {
-  res.json({ message: "pass!" })
 })
 
 app.listen(port, () => {

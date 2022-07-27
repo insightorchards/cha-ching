@@ -1,38 +1,47 @@
 const request = require("supertest")
 const app = require("../app")
-// console.log("app", app)
-// const assert = require("assert")
-// const request = supertest(app);
-// import { jest } from "@jest/globals";
 
 describe("app", () => {
-  it("sends a response from root", () => {
-    request(app)
-      .get("/")
-      .expect(200)
-      .expect({ juice: "beatle juice" })
-      .end(function (err, res) {
-        if (err) throw err
-      })
-  })
-})
+  it("GET /", async () => {
+    const response = await request(app).get("/")
 
-describe.only("test", () => {
-  it("is a test", async () => {
-    const result = await await request(app).get("/")
-    expect(result.statusCode).toBe(200)
-    expect(result.body).toEqual(
+    expect(response.statusCode).toBe(200)
+    expect(response.headers["content-type"]).toEqual(
+      expect.stringContaining("json")
+    )
+    expect(response.body).toEqual(
       expect.objectContaining({
-        juice: "beatle juice",
+        test: "hello world!",
       })
     )
-    // console.log(result)
+  })
+
+  describe("POST /payment-intent", () => {
+    it.todo("has status code of 200")
+    it.todo("errors gracefully")
+    it.todo("has a response with clientSecret in it")
+
+    it.only("takes in amount and returns a stripe paymentIntent object", async () => {
+      const response = await request(app)
+        .post("/payment-intent")
+        .send({ amount: 209 })
+
+      expect(response.statusCode).toBe(200)
+      expect(response.headers["content-type"]).toEqual(
+        expect.stringContaining("json")
+      )
+      expect(response.body.client_secret).toBeDefined()
+      expect(response.body).toEqual(
+        expect.objectContaining({
+          id: expect.any(String),
+          client_secret: expect.any(String),
+          amount: 209,
+          currency: "usd",
+          payment_method_options: expect.objectContaining({
+            card: expect.anything(),
+          }),
+        })
+      )
+    })
   })
 })
-// it("Gets the test endpoint", async (done) => {
-//   // Sends GET Request to /test endpoint
-//   const res = await request.get("/test");
-
-//   // ...
-//   done();
-// });
