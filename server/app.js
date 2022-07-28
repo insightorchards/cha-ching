@@ -27,7 +27,6 @@ app.get("/payment-intent", async (req, res) => {
 })
 
 app.post("/payment-intent", async (req, res) => {
-  console.log("I was run!!!! I ran I ran so far awayyyyy!")
   const paymentIntent = await stripe.paymentIntents.create({
     amount: req.body.amount || 500,
     currency: "usd",
