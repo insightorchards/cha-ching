@@ -17,6 +17,10 @@ app.get("/success", (req, res) => {
   res.send("Success!");
 });
 
+app.get("/cancel", (req, res) => {
+  res.send("cancel");
+});
+
 app.get("/payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 2000,
