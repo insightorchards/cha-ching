@@ -2,6 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 import CheckoutForm from "./CheckoutForm";
+import Success from "./Success";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -28,7 +29,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<CheckoutForm />} />
-          <Route path="/success" element={<div>Success!</div>} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </Router>
     </Elements>
