@@ -13,16 +13,13 @@ app.get("/", (req, res) => {
   res.json({ juice: "beatle juice" });
 });
 
-app.get("/success", (req, res) => {
-  res.send("Success!");
-});
-
 app.get("/payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: 2000,
     currency: "usd",
   });
-  res.json({ clientSecret: paymentIntent.client_secret });
+  // res.json({ clientSecret: paymentIntent.client_secret });
+  res.json({ clientSecret: undefined });
 });
 
 app.post("/", (req, res) => {
