@@ -18,13 +18,22 @@ describe("app", () => {
     })
   })
 
-  // describe("GET /stripe-client-secret", () => {
-  //   it("has status code of 200 on success", async () => {
-  //     const response = await request(app).get("/stripe-client-secret")
+  describe("GET /stripe-client-secret", () => {
+    it("responds with a clientSecret", async () => {
+      const response = await request(app).get("/stripe-client-secret")
 
-  //     expect(response.statusCode).toBe(200)
-  //   })
-  // })
+      expect(response.body).toEqual(
+        expect.objectContaining({
+          clientSecret: expect.any(String),
+        })
+      )
+    })
+    it("has status code of 200 on success", async () => {
+      const response = await request(app).get("/stripe-client-secret")
+
+      expect(response.statusCode).toBe(200)
+    })
+  })
 
   describe("POST /payment-intent", () => {
     // may add beforeEach()
@@ -70,6 +79,13 @@ describe("app", () => {
       expect(response.body.client_secret).toBeDefined()
     })
 
-    it.todo("handles errors gracefully")
+    describe("handles errors gracefully", () => {
+      // it("returns an error if req.body.amount is not passed", async () => {
+      //   const response = await request(app).post("/payment-intent").send({})
+      //   expect(response.body).toEqual(
+      //     new Error("Missing required param: amount.")
+      //   )
+      // })
+    })
   })
 })

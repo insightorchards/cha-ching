@@ -28,16 +28,20 @@ app.get("/payment-intent", async (req, res) => {
 
 app.post("/payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: req.body.amount || 500,
+    amount: req.body.amount,
     currency: "usd",
   })
   // handle and return error if paymentIntents.create errors out or there's no req.body.amount
   res.json(paymentIntent)
 })
 
-app.post("/", (req, res) => {
-  res.json({ drink: "banana soda" })
-  console.log("POST REQUEST BODY", req.body)
+app.get("/stripe-client-secret", async (req, res) => {
+  const paymentIntentResponse = await stripe.paymentIntents.create({
+    amount: 1000,
+    currency: "usd",
+  })
+  // console.log({ paymentIntentResponse }).catch((err) => res.json(err))
+  res.json({ clientSecret: paymentIntentResponse.client_secret })
 })
 
 app.listen(port, () => {
