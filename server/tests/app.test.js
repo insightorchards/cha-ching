@@ -38,12 +38,12 @@ describe("app", () => {
 
   describe("POST /payment-intent", () => {
     describe("gets called with the correct req.body", () => {
-      let response
-      beforeAll(async () => {
-        response = await request(app)
-          .post("/payment-intent")
-          .send({ amount: 700 })
-      })
+      //   let response
+      //   beforeAll(async () => {
+      //     response = await request(app)
+      //       .post("/payment-intent")
+      //       .send({ amount: 700 })
+      //   })
 
       it("takes in object with amount and returns a stripe paymentIntent object", async () => {
         expect(response.body).toEqual(
@@ -74,13 +74,23 @@ describe("app", () => {
       })
     })
 
-    describe("handles errors gracefully", () => {
-      // it.only("returns an error if req.body.amount is not passed", async () => {
-      //   const response = await request(app).post("/payment-intent").send({})
-      //   expect(response.body).toEqual(
-      //     new Error("Missing required param: amount.")
-      //   )
+    describe("handles errors when called with incorrect req.body params", () => {
+      // let response
+      // beforeAll(() => {
+      //   response = await request(app).post("/payment-intent")
       // })
+
+      it.todo("recieves back res.body.error when req.body is not a json object")
+
+      it.only("returns an response with error if req.body.amount is not an interger", async () => {
+        const result = await request(app)
+          .post("/payment-intent")
+          .send({ amount: "" })
+        // expect(result.statusCode).toBe(400)
+        expect(result).toEqual("some error")
+      })
+
+      it("returns a status code of 400", () => {})
     })
   })
 })

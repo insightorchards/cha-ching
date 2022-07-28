@@ -19,20 +19,34 @@ app.get("/success", (req, res) => {
 })
 
 app.get("/payment-intent", async (req, res) => {
-  const paymentIntent = await stripe.paymentIntents.create({
+  const paymentIntentResponse = await stripe.paymentIntents.create({
     amount: 2000,
     currency: "usd",
   })
-  res.json({ clientSecret: paymentIntent.client_secret })
+  res.json({ clientSecret: paymentIntentResponse.client_secret })
 })
 
-app.post("/payment-intent", async (req, res) => {
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: req.body.amount,
-    currency: "usd",
-  })
-  // handle and return error if paymentIntents.create errors out or there's no req.body.amount
-  res.json(paymentIntent)
+app.post("/payment-intent", async (req, res, next) => {
+  let statusCode
+  let response
+  // if (typeof req.body !== "object") {
+  //   console.log("yo this thing was not an object!")
+  //   response = "some error"
+  // }
+  const paymentIntentResponse = await stripe.paymentIntents
+    .create({
+      amount: req.body.amount,
+      currency: "usd",
+    })
+    .catch((err) => {
+      console.log("status code:", err.statusCode)
+      console.log("status code:", err.raw.message)
+      return err
+    })
+
+  statusCode = 200
+
+  res.json(paymentIntentResponse)
 })
 
 app.get("/stripe-client-secret", async (req, res) => {
