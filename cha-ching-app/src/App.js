@@ -3,7 +3,10 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 import CheckoutForm from "./CheckoutForm";
 import Success from "./Success";
+import Error from "./Error";
+import "./error.css";
 import "./App.css";
+import "./loading.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
@@ -17,6 +20,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setOptions(data);
+        console.log({ data });
       });
   }
 
@@ -25,16 +29,20 @@ function App() {
   }, []);
 
   return !isEmpty(options) ? (
-    <Elements options={options} stripe={stripePromise}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<CheckoutForm />} />
-          <Route path="/success" element={<Success />} />
-        </Routes>
-      </Router>
-    </Elements>
+    options.clientSecret === undefined ? (
+      <Error />
+    ) : (
+      <Elements options={options} stripe={stripePromise}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<CheckoutForm />} />
+            <Route path="/success" element={<Success />} />
+          </Routes>
+        </Router>
+      </Elements>
+    )
   ) : (
-    "loading"
+    <div>Loading</div>
   );
 }
 
