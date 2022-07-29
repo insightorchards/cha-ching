@@ -13,15 +13,19 @@ const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
 function App() {
   const isEmpty = (object) => Object.keys(object).length === 0;
-  const [options, setOptions] = useState({});
+  const [ options, setOptions ] = useState({});
+  const [ showError, setShowError ] = useState(false);
 
   async function fetchData() {
     await fetch("http://localhost:3001/payment-intent")
       .then((res) => res.json())
       .then((data) => {
         setOptions(data);
-        console.log({ data });
-      });
+        if (isEmpty(data)) {
+          setShowError = true
+        }
+      })
+      .catch(err => console.log("err", err))
   }
 
   useEffect(() => {
@@ -29,9 +33,6 @@ function App() {
   }, []);
 
   return !isEmpty(options) ? (
-    options.clientSecret === undefined ? (
-      <Error />
-    ) : (
       <Elements options={options} stripe={stripePromise}>
         <Router>
           <Routes>
@@ -40,10 +41,9 @@ function App() {
           </Routes>
         </Router>
       </Elements>
-    )
-  ) : (
-    <div>Loading</div>
-  );
+    ) : (
+      showError ? <Error /> : <div>Loading</div>
+    );
 }
 
 export default App;

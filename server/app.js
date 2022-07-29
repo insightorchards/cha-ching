@@ -18,8 +18,8 @@ app.get("/payment-intent", async (req, res) => {
     amount: 2000,
     currency: "usd",
   });
-  // res.json({ clientSecret: paymentIntent.client_secret });
-  res.json({ clientSecret: undefined });
+  res.json({ clientSecret: paymentIntent.client_secret });
+  // res.json({ clientSecret: undefined });
 });
 
 app.post("/", (req, res) => {
