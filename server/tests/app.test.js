@@ -75,14 +75,24 @@ describe("app", () => {
     })
 
     describe("handles errors when called with incorrect req.body params", () => {
-      it.todo("recieves back res.body.error when req.body is not a json object")
+      it("returns a res.body.error key when req.body.amount is not provided", async () => {
+        const result = await request(app)
+          .post("/payment-intent")
+          .send("invalid param data type")
 
-      it("returns an response with error if req.body.amount is not an interger", async () => {
+        expect(result.body).toEqual(
+          expect.objectContaining({
+            error: "Missing required param: amount.",
+            statusCode: 400,
+          })
+        )
+      })
+
+      it("returns a response with error if req.body.amount is not an interger", async () => {
         const result = await request(app)
           .post("/payment-intent")
           .send({ amount: "" })
 
-        expect(result.statusCode).toBe(400)
         expect(result.body).toEqual(
           expect.objectContaining({
             error: "Invalid integer: ",
@@ -90,7 +100,13 @@ describe("app", () => {
         )
       })
 
-      it("returns a status code of 400", () => {})
+      it("returns a status code of 400", async () => {
+        const result = await request(app)
+          .post("/payment-intent")
+          .send({ amount: "" })
+
+        expect(result.statusCode).toBe(400)
+      })
     })
   })
 })

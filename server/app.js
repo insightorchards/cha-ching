@@ -19,11 +19,11 @@ app.get("/success", (req, res) => {
 })
 
 app.get("/payment-intent", async (req, res) => {
-  const paymentIntentResponse = await stripe.paymentIntents.create({
+  const paymentIntentResult = await stripe.paymentIntents.create({
     amount: 2000,
     currency: "usd",
   })
-  res.json({ clientSecret: paymentIntentResponse.client_secret })
+  res.json({ clientSecret: paymentIntentResult.client_secret })
 })
 
 app.post("/payment-intent", async (req, res, next) => {
@@ -42,7 +42,10 @@ app.post("/payment-intent", async (req, res, next) => {
 
   const response = paymentIntentResult.errorCode
     ? { error: paymentIntentResult.error }
-    : { ...paymentIntentResult }
+    : {
+        ...paymentIntentResult,
+        clientSecret: paymentIntentResult.client_secret,
+      }
 
   res.statusCode = errorStatusCode || 200
   res.json(response)
@@ -51,7 +54,7 @@ app.post("/payment-intent", async (req, res, next) => {
 app.get("/stripe-client-secret", async (req, res) => {
   let errorStatusCode
 
-  const paymentIntentResponse = await stripe.paymentIntents
+  const paymentIntentResult = await stripe.paymentIntents
     .create({
       amount: 1000,
       currency: "usd",
@@ -62,9 +65,9 @@ app.get("/stripe-client-secret", async (req, res) => {
       return { error: errorMessage, errorStatusCode }
     })
 
-  const result = paymentIntentResponse.errorCode
-    ? { error: paymentIntentResponse.error, statusCode: errorStatusCode }
-    : { clientSecret: paymentIntentResponse.client_secret }
+  const result = paymentIntentResult.errorCode
+    ? { error: paymentIntentResult.error, statusCode: errorStatusCode }
+    : { clientSecret: paymentIntentResult.client_secret }
 
   res.statusCode = errorStatusCode || 200
   res.json(result)
