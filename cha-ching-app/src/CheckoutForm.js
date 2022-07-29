@@ -17,9 +17,6 @@ function CheckoutForm() {
         },
       })
       .then((data) => console.log("What am I (data):", data))
-      .catch((err) =>
-        console.log("Something went wrong confirming the payment:", err),
-      );
   };
 
   return (
