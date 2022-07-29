@@ -1,6 +1,6 @@
 import "./error.css";
 
-const Error = (message, code, type) => {
+function Error() {
   return (
     <div className="errorWrapper">
       <div className="errorContainer">
@@ -8,6 +8,6 @@ const Error = (message, code, type) => {
       </div>
     </div>
   );
-};
+}
 
 export default Error;
