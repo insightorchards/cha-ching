@@ -27,36 +27,47 @@ app.get("/payment-intent", async (req, res) => {
 })
 
 app.post("/payment-intent", async (req, res, next) => {
-  let statusCode = 200
-  let response
-  // if (typeof req.body !== "object") {
-  //   console.log("yo this thing was not an object!")
-  //   response = "some error"
-  // }
-  const paymentIntentResponse = await stripe.paymentIntents
+  let errorStatusCode
+
+  const paymentIntentResult = await stripe.paymentIntents
     .create({
       amount: req.body.amount,
       currency: "usd",
     })
     .catch((err) => {
-      console.log("status code:", err.statusCode)
-      console.log("error message:", err.raw.message)
-      statusCode = err.statusCode
-      response = err.raw.message
-      return err
+      errorStatusCode = err.statusCode
+      errorMessage = err.raw.message
+      return { error: errorMessage, statusCode: errorStatusCode }
     })
-  res.statusCode = 400
-  res.json(paymentIntentResponse.raw.message)
-  // res.json(paymentIntentResponse)
+
+  const response = paymentIntentResult.errorCode
+    ? { error: paymentIntentResult.error }
+    : { ...paymentIntentResult }
+
+  res.statusCode = errorStatusCode || 200
+  res.json(response)
 })
 
 app.get("/stripe-client-secret", async (req, res) => {
-  const paymentIntentResponse = await stripe.paymentIntents.create({
-    amount: 1000,
-    currency: "usd",
-  })
-  // console.log({ paymentIntentResponse }).catch((err) => res.json(err))
-  res.json({ clientSecret: paymentIntentResponse.client_secret })
+  let errorStatusCode
+
+  const paymentIntentResponse = await stripe.paymentIntents
+    .create({
+      amount: 1000,
+      currency: "usd",
+    })
+    .catch((err) => {
+      errorCode = err.statusCode
+      const errorMessage = err.raw.message
+      return { error: errorMessage, errorStatusCode }
+    })
+
+  const result = paymentIntentResponse.errorCode
+    ? { error: paymentIntentResponse.error, statusCode: errorStatusCode }
+    : { clientSecret: paymentIntentResponse.client_secret }
+
+  res.statusCode = errorStatusCode || 200
+  res.json(result)
 })
 
 app.listen(port, () => {
