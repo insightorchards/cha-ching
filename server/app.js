@@ -51,7 +51,27 @@ app.post("/payment-intent", async (req, res, next) => {
   res.json(response)
 })
 
-app.get("/stripe-client-secret", async (req, res) => {
+// how do I get enforce signature to take in enforceSignature(_signatureObject, req, res, next, errorStacker)
+const enforceSignature = (req, res, next) => {
+  console.log("WIP, continue investigation into error handling with middlewear")
+  next()
+  // // if(req.headers.type !== json) error handling call an errorStack() function or something
+  // if (typeof req.body.amount !== "object") {
+  //   throw new Error(
+  //     "oops you didnt pass me an obj, Im allergic to anything else!"
+  //   ) // throw or just run a response object!
+  //   next()
+  // }
+  // if (typeof req.body.amount !== "integer") {
+  //   throw new Error(
+  //     "oops, Im gonna need an integer pal! Did you pass middleschool geometry ?"
+  //   )
+  //   // throw or just run a response object ?
+  //   next()
+  // }
+}
+
+app.get("/stripe-client-secret", enforceSignature, async (req, res) => {
   let errorStatusCode
 
   const paymentIntentResult = await stripe.paymentIntents
