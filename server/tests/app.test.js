@@ -87,7 +87,8 @@ describe("app", () => {
           .post("/payment-intent")
           .send({ amount: "" })
         // expect(result.statusCode).toBe(400)
-        expect(result).toEqual("some error")
+        expect(result.statusCode).toBe(400)
+        expect(result.body).toEqual("Invalid integer: ")
       })
 
       it("returns a status code of 400", () => {})

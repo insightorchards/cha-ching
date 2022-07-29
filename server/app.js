@@ -27,7 +27,7 @@ app.get("/payment-intent", async (req, res) => {
 })
 
 app.post("/payment-intent", async (req, res, next) => {
-  let statusCode
+  let statusCode = 200
   let response
   // if (typeof req.body !== "object") {
   //   console.log("yo this thing was not an object!")
@@ -40,13 +40,14 @@ app.post("/payment-intent", async (req, res, next) => {
     })
     .catch((err) => {
       console.log("status code:", err.statusCode)
-      console.log("status code:", err.raw.message)
+      console.log("error message:", err.raw.message)
+      statusCode = err.statusCode
+      response = err.raw.message
       return err
     })
-
-  statusCode = 200
-
-  res.json(paymentIntentResponse)
+  res.statusCode = 400
+  res.json(paymentIntentResponse.raw.message)
+  // res.json(paymentIntentResponse)
 })
 
 app.get("/stripe-client-secret", async (req, res) => {
