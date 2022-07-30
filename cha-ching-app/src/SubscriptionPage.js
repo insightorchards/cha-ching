@@ -4,7 +4,7 @@ import SubscriptionButton from "./SubscriptionButton";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
+import VSpacer from "./VSpacer";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
@@ -13,7 +13,9 @@ const SubscriptionPage = () => {
 
   return (
     <div className="pageWrapper">
+      <VSpacer factor={4} />
       <div className="title">Flower Company Name</div>
+      <VSpacer factor={5} />
       <div className="buttonsWrapper">
         <SubscriptionButton
           onClick={() => setSubscriptionType("monthly")}
@@ -27,11 +29,13 @@ const SubscriptionPage = () => {
           text="$60 per year"
         />
       </div>
+      <VSpacer factor={4} />
       <div className="descriptionWrapper">
         <div className="descriptionTitle">
           {`Description of ${subscriptionType} subscription`}
         </div>
 
+        <VSpacer factor={4} />
         {subscriptionType === "monthly" ? (
           <div className="monthlyInfo">
             <ul>
@@ -50,6 +54,7 @@ const SubscriptionPage = () => {
           </div>
         ) : null}
       </div>
+      <VSpacer factor={6} />
       <button className="submitButton" onClick={() => navigate("/")}>
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
