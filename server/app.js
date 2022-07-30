@@ -14,6 +14,48 @@ app.get("/", (req, res) => {
   res.json({ test: "hello world!" })
 })
 
+app.get("/subscriptions", async (req, res) => {
+  const product = await stripe.products.create({
+    name: 'Jelly Bean',
+  })
+
+  const price = await stripe.prices.create({
+    currency: 'usd',
+    product: product.id,
+    unit_amount: 2000,
+    recurring: {
+      interval: "month"
+    }
+  })
+
+  const paymentMethod = await stripe.paymentMethods.create({
+    type: 'card',
+    card: {
+      number: '4242424242424242',
+      exp_month: 7,
+      exp_year: 2023,
+      cvc: '314',
+    },
+  })
+
+  const customer = await stripe.customers.create({
+    email: "jojobob@example.com",
+    name: "Jojo Bob",
+    payment_method: paymentMethod.id
+  });
+
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [
+      {price: price.id},
+    ],
+    default_payment_method: paymentMethod.id
+  });
+
+  res.json(subscription)
+  console.log("subscription", subscription)
+})
+
 app.get("/payment-intent", async (req, res) => {
   const paymentIntentResult = await stripe.paymentIntents.create({
     amount: 2000,
