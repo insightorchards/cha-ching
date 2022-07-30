@@ -1,0 +1,29 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  margin-top: 12px;
+}
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.descriptionTitle {
+  display: flex;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}

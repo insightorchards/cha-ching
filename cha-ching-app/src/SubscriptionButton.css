@@ -1,0 +1,24 @@
+.buttonsWrapper {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.SubscriptionButton {
+  border-radius: 20px;
+  cursor: pointer;
+  height: 100px;
+  width: 200px;
+}
+
+.SubscriptionButton {
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  height: 100px;
+  width: 200px;
+}

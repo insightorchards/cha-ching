@@ -8,6 +8,8 @@ function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  // perhaps a try catch here.
+
   const handleSubmit = async () => {
     await stripe
       .confirmPayment({
@@ -17,6 +19,7 @@ function CheckoutForm() {
         },
       })
       .then((data) => console.log("What am I (data):", data))
+      .catch((data) => console.log("poopy head professionals"));
   };
 
   return (

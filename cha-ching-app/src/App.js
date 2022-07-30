@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import CheckoutForm from "./CheckoutForm";
 import Success from "./Success";
 import Error from "./Error";
-import SubscriptionButtons from "./SubscriptionButtons";
+import SubscriptionPage from "./SubscriptionPage";
 import "./error.css";
 import "./App.css";
 import "./loading.css";
@@ -23,7 +23,7 @@ function App() {
       .then((data) => {
         setOptions(data);
         if (isEmpty(data)) {
-          setShowError = true;
+          setShowError(true);
         }
       })
       .catch((err) => console.log("err", err));
@@ -39,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CheckoutForm />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/subscription" element={<SubscriptionButtons />} />
+          <Route path="/subscriptionPage" element={<SubscriptionPage />} />
         </Routes>
       </Router>
     </Elements>
