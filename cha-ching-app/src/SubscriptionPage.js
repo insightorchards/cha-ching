@@ -3,24 +3,28 @@ import HSpacer from "./HSpacer";
 import SubscriptionButton from "./SubscriptionButton";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const SubscriptionPage = () => {
+  const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("yearly");
   console.log(subscriptionType);
+
   return (
     <div className="pageWrapper">
       <div className="title">Flower Company Name</div>
       <div className="buttonsWrapper">
         <SubscriptionButton
+          onClick={() => setSubscriptionType("monthly")}
           selected={subscriptionType === "monthly"}
           text="12.99 per month"
-          onClick={() => setSubscriptionType("monthly")}
         />
         <HSpacer factor={4} />
         <SubscriptionButton
+          onClick={() => setSubscriptionType("yearly")}
           selected={subscriptionType === "yearly"}
           text="$60 per year"
-          onClick={() => setSubscriptionType("yearly")}
         />
       </div>
       <div className="descriptionWrapper">
@@ -46,6 +50,9 @@ const SubscriptionPage = () => {
           </div>
         ) : null}
       </div>
+      <button className="submitButton" onClick={() => navigate("/")}>
+        {`I would like to sign up for a ${subscriptionType} subscription`}
+      </button>
     </div>
   );
 };
