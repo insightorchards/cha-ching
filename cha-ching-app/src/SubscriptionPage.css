@@ -33,9 +33,9 @@
   width: 400px;
   cursor: pointer;
   border-radius: 20px;
-  background-color: "thistle";
+  background-color: rgb(243, 237, 237);
 }
 
 .submitButton:hover {
-  background-color: coral;
+  background-color: thistle;
 }
