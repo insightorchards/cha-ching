@@ -1,39 +1,40 @@
 .pageWrapper {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .title {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
+  justify-content: center;
   margin-top: 12px;
 }
+
 .buttonsWrapper {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
   width: 100%;
 }
 
 .descriptionTitle {
   display: flex;
-  font-size: 28px;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
   font-weight: 400;
 }
 
 .submitButton {
+  background-color: rgb(243, 237, 237);
+  border-radius: 20px;
+  cursor: pointer;
   height: 50px;
   width: 400px;
-  cursor: pointer;
-  border-radius: 20px;
-  background-color: rgb(243, 237, 237);
 }
 
 .submitButton:hover {

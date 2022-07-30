@@ -39,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CheckoutForm />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/subscriptionPage" element={<SubscriptionPage />} />
+          <Route path="/subscription-page" element={<SubscriptionPage />} />
         </Routes>
       </Router>
     </Elements>
