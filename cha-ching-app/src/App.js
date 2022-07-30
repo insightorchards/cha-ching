@@ -7,7 +7,8 @@ import Error from "./Error";
 import SubscriptionPage from "./SubscriptionPage";
 import "./error.css";
 import "./App.css";
-import "./loading.css";
+import "./Loading.css";
+import Loading from "./Loading";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
@@ -40,13 +41,14 @@ function App() {
           <Route path="/" element={<CheckoutForm />} />
           <Route path="/success" element={<Success />} />
           <Route path="/subscription-page" element={<SubscriptionPage />} />
+          <Route path="/loading" element={<Loading />} />
         </Routes>
       </Router>
     </Elements>
   ) : showError ? (
     <Error />
   ) : (
-    <div>Loading</div>
+    <Loading />
   );
 }
 

@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.json({ test: "hello world!" })
 })
 
+app.get("/cancel", (req, res) => {
+  res.send("cancel");
+});
+
 app.get("/payment-intent", async (req, res) => {
   const paymentIntentResult = await stripe.paymentIntents.create({
     amount: 2000,
