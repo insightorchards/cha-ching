@@ -27,28 +27,19 @@ app.get("/payment-intent", async (req, res) => {
 })
 
 app.post("/payment-intent", async (req, res, next) => {
-  let errorStatusCode
-
   const paymentIntentResult = await stripe.paymentIntents
     .create({
       amount: req.body.amount,
       currency: "usd",
     })
     .catch((err) => {
-      errorStatusCode = err.statusCode
-      errorMessage = err.raw.message
+      const errorStatusCode = err.statusCode
+      const errorMessage = err.raw.message
       return { error: errorMessage, statusCode: errorStatusCode }
     })
 
-  const response = paymentIntentResult.errorCode
-    ? { error: paymentIntentResult.error }
-    : {
-        ...paymentIntentResult,
-        clientSecret: paymentIntentResult.client_secret,
-      }
-
-  res.statusCode = errorStatusCode || 200
-  res.json(response)
+  res.statusCode = paymentIntentResult.error ? 400 : 200
+  res.json(paymentIntentResult)
 })
 
 // how do I get enforce signature to take in enforceSignature(_signatureObject, req, res, next, errorStacker)
@@ -72,25 +63,22 @@ const enforceSignature = (req, res, next) => {
 }
 
 app.get("/stripe-client-secret", enforceSignature, async (req, res) => {
-  let errorStatusCode
-
   const paymentIntentResult = await stripe.paymentIntents
     .create({
       amount: 1000,
       currency: "usd",
     })
+    .then((data) => {
+      return { ...data, clientSecret: data.client_secret }
+    })
     .catch((err) => {
-      errorCode = err.statusCode
+      const errorStatusCode = err.statusCode
       const errorMessage = err.raw.message
       return { error: errorMessage, errorStatusCode }
     })
 
-  const result = paymentIntentResult.errorCode
-    ? { error: paymentIntentResult.error, statusCode: errorStatusCode }
-    : { clientSecret: paymentIntentResult.client_secret }
-
-  res.statusCode = errorStatusCode || 200
-  res.json(result)
+  res.statusCode = paymentIntentResult.error ? 400 : 200
+  res.json(paymentIntentResult)
 })
 
 app.listen(port, () => {

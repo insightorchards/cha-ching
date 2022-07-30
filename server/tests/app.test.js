@@ -70,7 +70,8 @@ describe("app", () => {
       })
 
       it("has a client_secret in the response", async () => {
-        expect(response.body.client_secret).toBeDefined() // strengthen this test. . . assert it starts as a key with pi! and is a certain number of characters maybe
+        const clientSecretRegex = /^pi_.*_secret_.*/
+        expect(response.body.client_secret).toMatch(clientSecretRegex)
       })
     })
 
