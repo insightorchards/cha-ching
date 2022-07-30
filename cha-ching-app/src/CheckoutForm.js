@@ -17,6 +17,7 @@ function CheckoutForm() {
         },
       })
       .then((data) => console.log("What am I (data):", data))
+      .catch((data) => console.log("I am an error"));
   };
 
   return (
