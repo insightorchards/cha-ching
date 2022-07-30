@@ -48,7 +48,6 @@ function App() {
   ) : showError ? (
     <Error />
   ) : (
-    // <div>Loading</div>
     <Loading />
   );
 }
