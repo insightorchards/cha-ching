@@ -39,6 +39,7 @@ app.get("/create-incomplete-subscription", async (req, res) => {
   res.json({incompleteSubscription: subscription})
 })
 
+//TODO: rename this endpoint to update-product when it comes time to provide the data for the product
 app.post("/create-product", async (req, res) => {
   console.log("req.body", req.body)
   const productResult = await stripe.products.create({
@@ -53,19 +54,13 @@ app.post("/create-product", async (req, res) => {
     }
   })
 
-  const customer = await stripe.customers.create({
-    // email: "jojobob@example.com",
-    // name: "Jojo Bob",
-    // payment_method: paymentMethod.id
-  });
+  const customer = await stripe.customers.create({});
 
-  // customer: customer.id,
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
     items: [
       {price: priceResult.id},
     ],
-    // default_payment_method: paymentMethod.id,
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent'],
@@ -102,18 +97,17 @@ app.get("/subscriptions", async (req, res) => {
   })
 
   const customer = await stripe.customers.create({
-    // email: "jojobob@example.com",
-    // name: "Jojo Bob",
-    // payment_method: paymentMethod.id
+    email: "jojobob@example.com",
+    name: "Jojo Bob",
+    payment_method: paymentMethod.id
   });
 
-  // customer: customer.id,
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
     items: [
       {price: price.id},
     ],
-    // default_payment_method: paymentMethod.id,
+    default_payment_method: paymentMethod.id,
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent'],
