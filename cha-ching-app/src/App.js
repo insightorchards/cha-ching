@@ -38,10 +38,9 @@ function App() {
     <Elements options={options} stripe={stripePromise}>
       <Router>
         <Routes>
-          <Route path="/" element={<CheckoutForm />} />
+          <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/subscription-page" element={<SubscriptionPage />} />
-          <Route path="/loading" element={<Loading />} />
+          <Route path="/subscription" element={<SubscriptionPage />} />
         </Routes>
       </Router>
     </Elements>

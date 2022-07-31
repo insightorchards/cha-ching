@@ -55,7 +55,7 @@ const SubscriptionPage = () => {
         ) : null}
       </div>
       <VSpacer factor={6} />
-      <button className="submitButton" onClick={() => navigate("/")}>
+      <button className="submitButton" onClick={() => navigate("/checkout")}>
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
     </div>
