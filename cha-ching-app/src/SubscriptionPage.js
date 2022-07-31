@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HSpacer from "./HSpacer";
 import SubscriptionButton from "./SubscriptionButton";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 import { useNavigate } from "react-router-dom";
 import VSpacer from "./VSpacer";
+import {
+  useStripe
+} from "@stripe/react-stripe-js";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("yearly");
-  console.log(subscriptionType);
+
+
+  function createProduct(){
+    console.log("I'm in post useffect")
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: `${subscriptionType} diy ikebana`,
+        amount: subscriptionType === 'monthly' ? 1200 : 10000
+      }),
+    }; 
+
+    fetch("http://localhost:3001/create-product", requestOptions)
+      .then((res) => res.json())
+      .then(data => console.log("create product data", data))
+      .catch(err => console.log("error creating product:", err))
+  }
 
   return (
     <div className="pageWrapper">
@@ -20,13 +40,13 @@ const SubscriptionPage = () => {
         <SubscriptionButton
           onClick={() => setSubscriptionType("monthly")}
           selected={subscriptionType === "monthly"}
-          text="12.99 per month"
+          text={`$12 per month`}
         />
         <HSpacer factor={4} />
         <SubscriptionButton
           onClick={() => setSubscriptionType("yearly")}
           selected={subscriptionType === "yearly"}
-          text="$60 per year"
+          text={`$100 per year`}
         />
       </div>
       <VSpacer factor={4} />
@@ -55,7 +75,13 @@ const SubscriptionPage = () => {
         ) : null}
       </div>
       <VSpacer factor={6} />
-      <button className="submitButton" onClick={() => navigate("/")}>
+      <button
+        className="submitButton"
+        onClick={() => {
+          createProduct()
+          // navigate("/")
+        }}
+      >
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
     </div>
