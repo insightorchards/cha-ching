@@ -14,12 +14,20 @@ app.get("/", (req, res) => {
   res.json({ test: "hello world!" })
 })
 
-app.post("/product", async (req, res) => {
+app.post("/create-product", async (req, res) => {
   console.log("req.body", req.body)
-  const product = await stripe.products.create({
+  const productResult = await stripe.products.create({
     name: req.body.name,
   })
-  res.json({ productName: product.name })
+  const priceResult = await stripe.prices.create({
+    currency: 'usd',
+    product: productResult.id,
+    unit_amount: req.body.amount,
+    recurring: {
+      interval: "month"
+    }
+  })
+  res.json({ result: priceResult })
 })
 
 app.get("/subscriptions", async (req, res) => {
