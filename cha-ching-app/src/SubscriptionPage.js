@@ -27,7 +27,7 @@ const SubscriptionPage = () => {
 
     fetch("http://localhost:3001/create-product", requestOptions)
       .then((res) => res.json())
-      .then(data => console.log({data}))
+      .then(data => console.log("create product data", data))
       .catch(err => console.log("error creating product:", err))
   }
 

@@ -14,6 +14,31 @@ app.get("/", (req, res) => {
   res.json({ test: "hello world!" })
 })
 
+app.get("/create-incomplete-subscription", async (req, res) => {
+
+  const productResult = await stripe.products.create({
+    name: "yearly subscription",
+  })
+  const priceResult = await stripe.prices.create({
+    currency: 'usd',
+    product: productResult.id,
+    unit_amount: 10000,
+    recurring: {
+      interval: "month"
+    }
+  })
+  const customer = await stripe.customers.create({});
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [{price: priceResult.id}],
+    payment_behavior: 'default_incomplete',
+    payment_settings: { save_default_payment_method: 'on_subscription' },
+    expand: ['latest_invoice.payment_intent'],
+  });
+
+  res.json({incompleteSubscription: subscription})
+})
+
 app.post("/create-product", async (req, res) => {
   console.log("req.body", req.body)
   const productResult = await stripe.products.create({
@@ -27,39 +52,62 @@ app.post("/create-product", async (req, res) => {
       interval: "month"
     }
   })
+
+  const customer = await stripe.customers.create({
+    // email: "jojobob@example.com",
+    // name: "Jojo Bob",
+    // payment_method: paymentMethod.id
+  });
+
+  // customer: customer.id,
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [
+      {price: priceResult.id},
+    ],
+    // default_payment_method: paymentMethod.id,
+    payment_behavior: 'default_incomplete',
+    payment_settings: { save_default_payment_method: 'on_subscription' },
+    expand: ['latest_invoice.payment_intent'],
+  });
+
+  res.json(subscription)
+  console.log("subscription", subscription.latest_invoice.payment_intent.client_secret)
+
   res.json({ result: priceResult })
 })
 
 app.get("/subscriptions", async (req, res) => {
-  // const product = await stripe.products.create({
-  //   name: 'Jelly Bean',
-  // })
+  const product = await stripe.products.create({
+    name: 'Jelly Bean',
+  })
 
-  // const price = await stripe.prices.create({
-  //   currency: 'usd',
-  //   product: product.id,
-  //   unit_amount: 2000,
-  //   recurring: {
-  //     interval: "month"
-  //   }
-  // })
+  const price = await stripe.prices.create({
+    currency: 'usd',
+    product: product.id,
+    unit_amount: 2000,
+    recurring: {
+      interval: "month"
+    }
+  })
 
-  // const paymentMethod = await stripe.paymentMethods.create({
-  //   type: 'card',
-  //   card: {
-  //     number: '4242424242424242',
-  //     exp_month: 7,
-  //     exp_year: 2023,
-  //     cvc: '314',
-  //   },
-  // })
+  const paymentMethod = await stripe.paymentMethods.create({
+    type: 'card',
+    card: {
+      number: '4242424242424242',
+      exp_month: 7,
+      exp_year: 2023,
+      cvc: '314',
+    },
+  })
 
   const customer = await stripe.customers.create({
-    email: "jojobob@example.com",
-    name: "Jojo Bob",
+    // email: "jojobob@example.com",
+    // name: "Jojo Bob",
     // payment_method: paymentMethod.id
   });
 
+  // customer: customer.id,
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
     items: [
