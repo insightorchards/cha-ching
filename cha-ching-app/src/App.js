@@ -15,24 +15,26 @@ const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
 function App() {
   const isEmpty = (object) => Object.keys(object).length === 0;
-  const [options, setOptions] = useState({});
+  // const [options, setOptions] = useState({});
   const [showError, setShowError] = useState(false);
 
-  async function fetchSubscriptionData() {
-    await fetch("http://localhost:3001/subscriptions")
-      .then((res) => res.json())
-      .then((data) => {
-        setOptions({clientSecret: data.latest_invoice.payment_intent.client_secret});
-        if (isEmpty(data)) {
-          setShowError(true);
-        }
-      })
-      .catch((err) => console.log("err", err));
-  }
+  const options = "pi_3LRNXKBCMffvlHFG1F9QKz0e_secret_CsQnhjf58QkXMbkSphWrmfBo1"
 
-  useEffect(() => {
-    fetchSubscriptionData();
-  }, []);
+  // async function fetchSubscriptionData() {
+  //   await fetch("http://localhost:3001/subscriptions")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setOptions({clientSecret: data.latest_invoice.payment_intent.client_secret});
+  //       if (isEmpty(data)) {
+  //         setShowError(true);
+  //       }
+  //     })
+  //     .catch((err) => console.log("err", err));
+  // }
+
+  // useEffect(() => {
+  //   fetchSubscriptionData();
+  // }, []);
 
   return !isEmpty(options) ? (
     <Elements options={options} stripe={stripePromise}>

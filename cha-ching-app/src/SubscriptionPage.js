@@ -1,15 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HSpacer from "./HSpacer";
 import SubscriptionButton from "./SubscriptionButton";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 import { useNavigate } from "react-router-dom";
 import VSpacer from "./VSpacer";
+import {
+  useStripe
+} from "@stripe/react-stripe-js";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("yearly");
-  console.log(subscriptionType);
+  const stripe = useStripe()
+  console.log("Stripe:", stripe)
+
+
+  function createProduct(){
+    console.log("I'm in post useffect")
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "Jorgey bean" }),
+    }; 
+
+    fetch("http://localhost:3001/product", requestOptions)
+      .then((res) => res.json())
+      .then(data => console.log({data}))
+      .catch(err => console.log("error creating product:", err))
+  }
 
   return (
     <div className="pageWrapper">
@@ -55,7 +74,13 @@ const SubscriptionPage = () => {
         ) : null}
       </div>
       <VSpacer factor={6} />
-      <button className="submitButton" onClick={() => navigate("/")}>
+      <button
+        className="submitButton"
+        onClick={() => {
+          createProduct()
+          // navigate("/")
+        }}
+      >
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
     </div>
