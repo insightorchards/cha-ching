@@ -18,11 +18,11 @@ function App() {
   const [options, setOptions] = useState({});
   const [showError, setShowError] = useState(false);
 
-  async function fetchData() {
-    await fetch("http://localhost:3001/payment-intent")
+  async function fetchSubscriptionData() {
+    await fetch("http://localhost:3001/subscriptions")
       .then((res) => res.json())
       .then((data) => {
-        setOptions(data);
+        setOptions({clientSecret: data.latest_invoice.payment_intent.client_secret});
         if (isEmpty(data)) {
           setShowError(true);
         }
@@ -31,7 +31,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchSubscriptionData();
   }, []);
 
   return !isEmpty(options) ? (

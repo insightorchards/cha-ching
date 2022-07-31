@@ -49,11 +49,14 @@ app.get("/subscriptions", async (req, res) => {
     items: [
       {price: price.id},
     ],
-    default_payment_method: paymentMethod.id
+    default_payment_method: paymentMethod.id,
+    payment_behavior: 'default_incomplete',
+    payment_settings: { save_default_payment_method: 'on_subscription' },
+    expand: ['latest_invoice.payment_intent'],
   });
 
   res.json(subscription)
-  console.log("subscription", subscription)
+  console.log("subscription", subscription.latest_invoice.payment_intent.client_secret)
 })
 
 app.get("/payment-intent", async (req, res) => {
