@@ -25,7 +25,7 @@ const SubscriptionPage = () => {
       .then((res) => res.json())
       .then(data => {
         console.log("client secret", data.latest_invoice.payment_intent.client_secret)
-        navigate("/checkout", { state: { clientSecret: data.latest_invoice.payment_intent.client_secret } })
+        navigate("/checkout", { state:  { clientSecret: data.latest_invoice.payment_intent.client_secret } })
       })
       .catch(err => console.log("error creating product:", err))
   }
