@@ -11,9 +11,9 @@ function App() {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<ElementsProviderCheckout />} />
+          <Route path="/" element={<SubscriptionPage />} />
+          <Route path="/checkout" element={<ElementsProviderCheckout />} />
           <Route path="/success" element={<Success />} />
-          <Route path="/subscription-page" element={<SubscriptionPage />} />
         </Routes>
       </Router>
     )
