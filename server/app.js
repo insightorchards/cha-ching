@@ -14,33 +14,7 @@ app.get("/", (req, res) => {
   res.json({ test: "hello world!" })
 })
 
-app.get("/create-incomplete-subscription", async (req, res) => {
-
-  const productResult = await stripe.products.create({
-    name: "yearly subscription",
-  })
-  const priceResult = await stripe.prices.create({
-    currency: 'usd',
-    product: productResult.id,
-    unit_amount: 10000,
-    recurring: {
-      interval: "month"
-    }
-  })
-  const customer = await stripe.customers.create({});
-  const subscription = await stripe.subscriptions.create({
-    customer: customer.id,
-    items: [{price: priceResult.id}],
-    payment_behavior: 'default_incomplete',
-    payment_settings: { save_default_payment_method: 'on_subscription' },
-    expand: ['latest_invoice.payment_intent'],
-  });
-
-  res.json({incompleteSubscription: subscription})
-})
-
-//TODO: rename this endpoint to update-product when it comes time to provide the data for the product
-app.post("/create-product", async (req, res) => {
+app.post("/create-incomplete-subscription", async (req, res) => {
   console.log("req.body", req.body)
   const productResult = await stripe.products.create({
     name: req.body.name,

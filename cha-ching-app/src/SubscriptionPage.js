@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HSpacer from "./HSpacer";
 import SubscriptionButton from "./SubscriptionButton";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 import { useNavigate } from "react-router-dom";
 import VSpacer from "./VSpacer";
-import { useStripe } from "@stripe/react-stripe-js";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("yearly");
 
-  function createProduct() {
-    console.log("I'm in post useffect");
+  function handleSubmit() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -22,9 +20,18 @@ const SubscriptionPage = () => {
       }),
     };
 
-    fetch("http://localhost:3001/create-product", requestOptions)
+    fetch(
+      "http://localhost:3001/create-incomplete-subscription",
+      requestOptions,
+    )
       .then((res) => res.json())
-      .then((data) => console.log("create product data", data))
+      .then((data) => {
+        navigate("/checkout", {
+          state: {
+            clientSecret: data.latest_invoice.payment_intent.client_secret,
+          },
+        });
+      })
       .catch((err) => console.log("error creating product:", err));
   }
 
@@ -72,13 +79,7 @@ const SubscriptionPage = () => {
         ) : null}
       </div>
       <VSpacer factor={6} />
-      <button
-        className="submitButton"
-        onClick={() => {
-          createProduct();
-          // navigate("/")
-        }}
-      >
+      <button className="submitButton" onClick={handleSubmit}>
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
     </div>
