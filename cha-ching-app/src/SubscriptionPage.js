@@ -32,9 +32,6 @@ const SubscriptionPage = () => {
 
   return (
     <div className="pageWrapper">
-      <VSpacer factor={4} />
-      <div className="title">Flower Company Name</div>
-      <VSpacer factor={5} />
       <div className="buttonsWrapper">
         <SubscriptionButton
           onClick={() => setSubscriptionType("starter")}
@@ -57,7 +54,7 @@ const SubscriptionPage = () => {
       <VSpacer factor={4} />
       <div className="descriptionWrapper">
         <div className="descriptionTitle">
-          {`Description of ${subscriptionType} subscription`}
+          {`${subscriptionType} Subscription`}
         </div>
 
         <VSpacer factor={4} />
@@ -84,7 +81,7 @@ const SubscriptionPage = () => {
         className="submitButton"
         onClick={handleSubmit}
       >
-        {`I would like to sign up for a ${subscriptionType} subscription`}
+        {`Sign Me Up`}
       </button>
     </div>
   );
