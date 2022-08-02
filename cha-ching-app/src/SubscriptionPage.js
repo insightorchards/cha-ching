@@ -58,19 +58,27 @@ const SubscriptionPage = () => {
         </div>
 
         <VSpacer factor={4} />
-        {subscriptionType === "monthly" ? (
-          <div className="monthlyInfo">
+        {subscriptionType === "starter" ? (
+          <div>
             <ul>
-              <li>This is the monthly info</li>
+              <li>This is Starter subscription info</li>
               <li>inspiration boxes</li>
               <li>fly me to the moon</li>
             </ul>
           </div>
         ) : null}
 
-        {subscriptionType === "yearly" ? (
-          <div className="yearlyInfo">
-            <li>this is the yearly info</li>
+        {subscriptionType === "intermediate" ? (
+          <div>
+            <li>this is Intermeditate subscription info</li>
+            <li>inspiration boxes</li>
+            <li>fly me to the moon</li>
+          </div>
+        ) : null}
+
+        {subscriptionType === "master" ? (
+          <div>
+            <li>this is Master subscription info</li>
             <li>inspiration boxes</li>
             <li>fly me to the moon</li>
           </div>
