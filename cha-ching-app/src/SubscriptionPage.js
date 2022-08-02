@@ -8,7 +8,7 @@ import VSpacer from "./VSpacer";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
-  const [subscriptionType, setSubscriptionType] = useState("yearly");
+  const [subscriptionType, setSubscriptionType] = useState("starter");
 
   function handleSubmit(){
     console.log("I'm in post useffect")
@@ -37,15 +37,21 @@ const SubscriptionPage = () => {
       <VSpacer factor={5} />
       <div className="buttonsWrapper">
         <SubscriptionButton
-          onClick={() => setSubscriptionType("monthly")}
-          selected={subscriptionType === "monthly"}
-          text={`$12 per month`}
+          onClick={() => setSubscriptionType("starter")}
+          selected={subscriptionType === "starter"}
+          text={`Starter`}
         />
         <HSpacer factor={4} />
         <SubscriptionButton
-          onClick={() => setSubscriptionType("yearly")}
-          selected={subscriptionType === "yearly"}
-          text={`$100 per year`}
+          onClick={() => setSubscriptionType("intermediate")}
+          selected={subscriptionType === "intermediate"}
+          text={`Intermediate`}
+        />
+        <HSpacer factor={4} />
+        <SubscriptionButton
+          onClick={() => setSubscriptionType("master")}
+          selected={subscriptionType === "master"}
+          text={`Master`}
         />
       </div>
       <VSpacer factor={4} />
