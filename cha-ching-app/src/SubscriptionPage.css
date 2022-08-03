@@ -1,11 +1,7 @@
 .pageWrapper {
-  align-items: center;
   background-color: black;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 40px;
+  height: 100vh;
 }
 
 .title {
@@ -18,10 +14,8 @@
 }
 
 .buttonsWrapper {
-  align-items: center;
   display: flex;
-  height: 100%;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -37,7 +31,7 @@
   border-radius: 20px;
   cursor: pointer;
   height: 50px;
-  width: 400px;
+  width: 250px;
 }
 
 .submitButton:hover {
