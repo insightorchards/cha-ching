@@ -15,7 +15,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-incomplete-subscription", async (req, res) => {
-  console.log("req.body", req.body);
   const productResult = await stripe.products.create({
     name: req.body.name,
   });
@@ -39,10 +38,6 @@ app.post("/create-incomplete-subscription", async (req, res) => {
   });
 
   res.json(subscription);
-  console.log(
-    "subscription",
-    subscription.latest_invoice.payment_intent.client_secret,
-  );
 });
 
 app.get("/subscriptions", async (req, res) => {
@@ -85,10 +80,6 @@ app.get("/subscriptions", async (req, res) => {
   });
 
   res.json(subscription);
-  console.log(
-    "subscription",
-    subscription.latest_invoice.payment_intent.client_secret,
-  );
 });
 
 app.get("/payment-intent", async (req, res) => {
@@ -118,7 +109,7 @@ app.post("/payment-intent", async (req, res, next) => {
 // how do I get enforce signature to take in enforceSignature(_signatureObject, req, res, next, errorStacker)
 const enforceSignature = (req, res, next) => {
   console.log(
-    "WIP, continue investigation into error handling with middlewear",
+    "WIP, continue investigation into error handling with middleware",
   );
   next();
   // // if(req.headers.type !== json) error handling call an errorStack() function or something
