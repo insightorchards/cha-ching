@@ -1,7 +1,8 @@
 .pageWrapper {
   background-color: black;
-  color: white;
+  color: rgb(206, 204, 204);
   height: 100vh;
+  
 }
 
 .title {
@@ -16,9 +17,9 @@
 .buttonsWrapper {
   align-items: center;
   display: flex;
-  height: 10vh;
+  height: 20vh;
   justify-content: space-between;
-  margin: 0 20px;
+  margin: 0 80px;
 }
 
 .descriptionAndImageContainer {
@@ -30,29 +31,44 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 28px;
   font-weight: 400;
+  padding: 0 0 20px 0;
 }
 
-.descriptionWrapper {
-  background-color: thistle;
+.leftSection {
   display: flex;
   flex-direction: column;
-  height: 90vh;
   justify-content: space-between;
+  margin: 50px 80px 80px 80px;
   width: 50vw;
+  height: 60vh;
 }
 
 .ikebanaImage {
-  background-color: pink;
-  height: 90vh;
+  /* background-color: pink; */
+  /* height: 80vh; */
   width: 50vw;
+  background-image: url("./ikebana.jpg");
+  background-size: cover;
+  background-repeat:   no-repeat;
+  background-position: center center;   
+
+  /* display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center; */
 }
 
 .submitButton {
-  background-color: rgb(243, 237, 237);
+  background-color: rgb(225, 223, 223);
   border-radius: 20px;
   cursor: pointer;
   height: 50px;
   width: 250px;
+  font-size: 20px;
 }
 
 .submitButton:hover {

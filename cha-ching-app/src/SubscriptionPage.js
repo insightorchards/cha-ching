@@ -49,11 +49,11 @@ const SubscriptionPage = () => {
         />
       </div>
       <div className="descriptionAndImageContainer">
-        <div className="descriptionWrapper">
-          <div className="descriptionTitle">
-            {`${capitalize(subscriptionType)} Subscription`}
-          </div>
-          <>
+        <div className="leftSection">
+          <div className="descriptionContainer">
+            <div className="descriptionTitle">
+              {`${capitalize(subscriptionType)} Subscription`}
+            </div>
             {subscriptionType === "starter" ? (
               <div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -71,7 +71,7 @@ const SubscriptionPage = () => {
                 Consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Porttitor eget dolor morbi non. Pharetra magna ac placerat vestibulum lectus mauris. Diam quis enim lobortis scelerisque. Mus mauris vitae ultricies leo integer malesuada nunc vel. Arcu dictum varius duis at. Libero justo laoreet sit amet cursus sit amet dictum. Urna condimentum mattis pellentesque id nibh tortor. Amet purus gravida quis blandit turpis cursus in hac. Urna et pharetra pharetra massa massa ultricies mi. Posuere ac ut consequat semper. Odio aenean sed adipiscing diam donec adipiscing. Morbi leo urna molestie at elementum eu facilisis sed. Malesuada proin libero nunc consequat interdum varius sit amet.
               </div>
             ) : null}
-          </>
+          </div>
           <button
             className="submitButton"
             onClick={handleSubmit}
@@ -79,9 +79,9 @@ const SubscriptionPage = () => {
             Sign Me Up
           </button>
         </div>
-        <div className="ikebanaImage">
+        {/* <div className="ikebanaImage">
           This where ikebana image goes
-        </div>
+        </div> */}
       </div>
     </div>
   );
