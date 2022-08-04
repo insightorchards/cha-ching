@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 1`] = `
+<DocumentFragment>
+  <div
+    class="spinnerWrapper"
+  >
+    <div
+      aria-live="polite"
+      class="spinnerContainer"
+      role="alert"
+    />
+  </div>
+</DocumentFragment>
+`;
