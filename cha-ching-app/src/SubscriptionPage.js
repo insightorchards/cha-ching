@@ -10,24 +10,29 @@ const SubscriptionPage = () => {
   const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("yearly");
 
-  function handleSubmit(){
-    console.log("I'm in post useffect")
+  function handleSubmit() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionType === 'monthly' ? 1200 : 10000
+        amount: subscriptionType === "monthly" ? 1200 : 10000,
       }),
-    }; 
+    };
 
-    fetch("http://localhost:3001/create-incomplete-subscription", requestOptions)
+    fetch(
+      "http://localhost:3001/create-incomplete-subscription",
+      requestOptions,
+    )
       .then((res) => res.json())
-      .then(data => {
-        console.log("client secret", data.latest_invoice.payment_intent.client_secret)
-        navigate("/checkout", { state:  { clientSecret: data.latest_invoice.payment_intent.client_secret } })
+      .then((data) => {
+        navigate("/checkout", {
+          state: {
+            clientSecret: data.latest_invoice.payment_intent.client_secret,
+          },
+        });
       })
-      .catch(err => console.log("error creating product:", err))
+      .catch((err) => console.log("error creating product:", err));
   }
 
   return (
@@ -74,10 +79,7 @@ const SubscriptionPage = () => {
         ) : null}
       </div>
       <VSpacer factor={6} />
-      <button
-        className="submitButton"
-        onClick={handleSubmit}
-      >
+      <button className="submitButton" onClick={handleSubmit}>
         {`I would like to sign up for a ${subscriptionType} subscription`}
       </button>
     </div>
