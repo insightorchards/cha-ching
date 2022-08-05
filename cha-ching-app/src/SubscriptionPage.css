@@ -1,8 +1,27 @@
-.pageWrapper {
-  background-color: black;
+.pageTopLayerContainer {
   color: rgb(206, 204, 204);
   height: 100vh;
-  
+  position: absolute;
+  top: 0;
+}
+
+.background {
+  background-color: black;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-end;
+  width: 100vw;
+}
+
+.backgroundIkebanaImage {
+  background-image: url("./ikebana.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-end;
+  width: 50vw;
 }
 
 .title {
@@ -14,7 +33,11 @@
   margin-top: 12px;
 }
 
-.buttonsWrapper {
+.subscriptionButtonsContainer {
+  width: 100vw;
+}
+
+.subscriptionButtons {
   align-items: center;
   display: flex;
   height: 20vh;
@@ -37,40 +60,21 @@
 .leftSection {
   display: flex;
   flex-direction: column;
+  height: 60vh;
   justify-content: space-between;
   margin: 50px 80px 80px 80px;
   width: 50vw;
-  height: 60vh;
-}
-
-.ikebanaImage {
-  /* background-color: pink; */
-  /* height: 80vh; */
-  width: 50vw;
-  background-image: url("./ikebana.jpg");
-  background-size: cover;
-  background-repeat:   no-repeat;
-  background-position: center center;   
-
-  /* display: flex;
-  height: 100vh;
-  justify-content: center;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  align-items: center; */
 }
 
 .submitButton {
   background-color: rgb(225, 223, 223);
   border-radius: 20px;
   cursor: pointer;
+  font-size: 20px;
   height: 50px;
   width: 250px;
-  font-size: 20px;
 }
 
 .submitButton:hover {
-  background-color: thistle;
+  background-color: white;
 }
