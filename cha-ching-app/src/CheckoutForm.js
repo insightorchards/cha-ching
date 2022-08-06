@@ -22,7 +22,7 @@ function CheckoutForm() {
   };
 
   return (
-    <div>
+    <div className="checkoutFormBackground">
       <div className="header">Cha-ching</div>
       <div className="paymentFormContainer">
         <form id="payment-form">
