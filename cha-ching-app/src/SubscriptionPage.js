@@ -36,10 +36,8 @@ const SubscriptionPage = () => {
   }
 
   return (
-    <div>
-      <div className="background">
-        <div className="backgroundIkebanaImage"/>
-      </div>
+    <div className="background">
+      <div className="backgroundIkebanaImage"/>
       <div className="pageTopLayerContainer">
         <div className="subscriptionButtonsContainer">
           <div className="subscriptionButtons">

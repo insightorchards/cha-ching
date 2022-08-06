@@ -1,0 +1,7 @@
+.placeholderHeroPage {
+    align-items: center;
+    background-color: thistle;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
