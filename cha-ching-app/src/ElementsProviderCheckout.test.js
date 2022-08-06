@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router-dom";
 describe("<ElementsProviderCheckout/>", () => {
   test("renders Loading when options are undefined", async () => {
     const component = render(
-      <MemoryRouter initialEntries={[{ pathname: "/", state: {} }]}>
+      <MemoryRouter initialEntries={[{ pathname: "/checkout", state: {} }]}>
         <ElementsProviderCheckout />
       </MemoryRouter>,
     );
@@ -16,7 +16,9 @@ describe("<ElementsProviderCheckout/>", () => {
   test("renders Error when clientSecret is null", async () => {
     const component = render(
       <MemoryRouter
-        initialEntries={[{ pathname: "/", state: { clientSecret: null } }]}
+        initialEntries={[
+          { pathname: "/checkout", state: { clientSecret: null } },
+        ]}
       >
         <ElementsProviderCheckout />
       </MemoryRouter>,
@@ -29,7 +31,7 @@ describe("<ElementsProviderCheckout/>", () => {
     const component = render(
       <MemoryRouter
         initialEntries={[
-          { pathname: "/", state: { clientSecret: "my_fake_secret" } },
+          { pathname: "/checkout", state: { clientSecret: "my_fake_secret" } },
         ]}
       >
         <ElementsProviderCheckout />
