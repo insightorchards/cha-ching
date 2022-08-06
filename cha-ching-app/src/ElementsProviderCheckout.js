@@ -13,7 +13,6 @@ const ElementsProviderCheckout = () => {
   // if we have gotten the clientSecret -> return Elements
   // if we have no options in the state, return Loading
   // if we have options, but no clientSecret, return Error element
-  console.log("options", options);
   return !isEmpty(options) ? (
     options.clientSecret === null ? (
       <Error />

@@ -24,10 +24,10 @@ function CheckoutForm() {
     <div>
       <div className="header">Cha-ching</div>
       <div className="paymentFormContainer">
-        <form id="payment-form">
+        <form name="payment-form">
           <div className="emailLabel">Email</div>
           <input className="emailInput"></input>
-          <div className="paymentElementcontainer">
+          <div>
             <PaymentElement />
           </div>
         </form>

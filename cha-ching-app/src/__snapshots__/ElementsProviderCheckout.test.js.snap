@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ElementsProviderCheckout/> renders Error when clientSecret is null 1`] = `
+<DocumentFragment>
+  <div
+    class="errorWrapper"
+  >
+    <div
+      class="errorContainer"
+    >
+      <div
+        class="errorText"
+      >
+        error
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 1`] = `
 <DocumentFragment>
   <div
@@ -10,6 +28,42 @@ exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 
       class="spinnerContainer"
       role="alert"
     />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<ElementsProviderCheckout/> renders Stripe's Elements provider with clientSecret 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="header"
+    >
+      Cha-ching
+    </div>
+    <div
+      class="paymentFormContainer"
+    >
+      <form
+        name="payment-form"
+      >
+        <div
+          class="emailLabel"
+        >
+          Email
+        </div>
+        <input
+          class="emailInput"
+        />
+        <div>
+          <div />
+        </div>
+      </form>
+      <button
+        class="button"
+      >
+        Submit
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;
