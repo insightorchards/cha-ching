@@ -3,6 +3,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import "./CheckoutForm.css"
 
 function CheckoutForm() {
   const stripe = useStripe();
@@ -21,7 +22,7 @@ function CheckoutForm() {
   };
 
   return (
-    <div>
+    <div className="checkoutFormBackground">
       <div className="header">Cha-ching</div>
       <div className="paymentFormContainer">
         <form id="payment-form">

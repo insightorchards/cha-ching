@@ -1,14 +1,14 @@
 import { useState } from "react";
-import HSpacer from "./HSpacer";
 import SubscriptionButton from "./SubscriptionButton";
+import { useNavigate } from "react-router-dom";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
-import { useNavigate } from "react-router-dom";
-import VSpacer from "./VSpacer";
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
-  const [subscriptionType, setSubscriptionType] = useState("yearly");
+  const [subscriptionType, setSubscriptionType] = useState("starter");
+
+  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
   function handleSubmit() {
     const requestOptions = {
@@ -36,52 +36,61 @@ const SubscriptionPage = () => {
   }
 
   return (
-    <div className="pageWrapper">
-      <VSpacer factor={4} />
-      <div className="title">Flower Company Name</div>
-      <VSpacer factor={5} />
-      <div className="buttonsWrapper">
-        <SubscriptionButton
-          onClick={() => setSubscriptionType("monthly")}
-          selected={subscriptionType === "monthly"}
-          text={`$12 per month`}
-        />
-        <HSpacer factor={4} />
-        <SubscriptionButton
-          onClick={() => setSubscriptionType("yearly")}
-          selected={subscriptionType === "yearly"}
-          text={`$100 per year`}
-        />
-      </div>
-      <VSpacer factor={4} />
-      <div className="descriptionWrapper">
-        <div className="descriptionTitle">
-          {`Description of ${subscriptionType} subscription`}
+    <div className="background">
+      <div className="backgroundIkebanaImage"/>
+      <div className="pageTopLayerContainer">
+        <div className="subscriptionButtonsContainer">
+          <div className="subscriptionButtons">
+            <SubscriptionButton
+              onClick={() => setSubscriptionType("starter")}
+              selected={subscriptionType === "starter"}
+              text={`Starter`}
+            />
+            <SubscriptionButton
+              onClick={() => setSubscriptionType("intermediate")}
+              selected={subscriptionType === "intermediate"}
+              text={`Intermediate`}
+            />
+            <SubscriptionButton
+              onClick={() => setSubscriptionType("master")}
+              selected={subscriptionType === "master"}
+              text={`Master`}
+            />
+          </div>
         </div>
+        <div className="descriptionAndImageContainer">
+          <div className="leftSection">
+            <div className="descriptionContainer">
+              <div className="descriptionTitle">
+                {`${capitalize(subscriptionType)} Subscription`}
+              </div>
+              {subscriptionType === "starter" ? (
+                <div>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+              ) : null}
 
-        <VSpacer factor={4} />
-        {subscriptionType === "monthly" ? (
-          <div className="monthlyInfo">
-            <ul>
-              <li>This is the monthly info</li>
-              <li>inspiration boxes</li>
-              <li>fly me to the moon</li>
-            </ul>
-          </div>
-        ) : null}
+              {subscriptionType === "intermediate" ? (
+                <div>
+                  Semper risus in hendrerit gravida rutrum quisque non tellus orci. Vulputate ut pharetra sit amet aliquam id diam maecenas. Nibh tortor id aliquet lectus. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Amet est placerat in egestas erat imperdiet sed euismod. Pharetra sit amet aliquam id diam maecenas ultricies mi. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Sagittis orci a scelerisque purus semper eget duis. Dolor sit amet consectetur adipiscing elit ut aliquam. Tellus mauris a diam maecenas sed enim ut sem viverra. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget egestas. Ut venenatis tellus in metus vulputate eu scelerisque felis. Vitae semper quis lectus nulla at volutpat diam ut venenatis.
+                </div>
+              ) : null}
 
-        {subscriptionType === "yearly" ? (
-          <div className="yearlyInfo">
-            <li>this is the yearly info</li>
-            <li>inspiration boxes</li>
-            <li>fly me to the moon</li>
+              {subscriptionType === "master" ? (
+                <div>
+                  Consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum. Porttitor eget dolor morbi non. Pharetra magna ac placerat vestibulum lectus mauris. Diam quis enim lobortis scelerisque. Mus mauris vitae ultricies leo integer malesuada nunc vel. Arcu dictum varius duis at. Libero justo laoreet sit amet cursus sit amet dictum. Urna condimentum mattis pellentesque id nibh tortor. Amet purus gravida quis blandit turpis cursus in hac. Urna et pharetra pharetra massa massa ultricies mi. Posuere ac ut consequat semper. Odio aenean sed adipiscing diam donec adipiscing. Morbi leo urna molestie at elementum eu facilisis sed. Malesuada proin libero nunc consequat interdum varius sit amet.
+                </div>
+              ) : null}
+            </div>
+            <button
+              className="submitButton"
+              onClick={handleSubmit}
+            >
+              Sign Me Up
+            </button>
           </div>
-        ) : null}
+        </div>
       </div>
-      <VSpacer factor={6} />
-      <button className="submitButton" onClick={handleSubmit}>
-        {`I would like to sign up for a ${subscriptionType} subscription`}
-      </button>
     </div>
   );
 };
