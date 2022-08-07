@@ -3,7 +3,7 @@ import "./Loading.css";
 function LoadingSpinner() {
   return (
     <div className="spinnerWrapper">
-      <div className="spinnerContainer"></div>
+      <div role="alert" aria-live="polite" className="spinnerContainer"></div>
     </div>
   );
 }
