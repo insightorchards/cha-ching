@@ -27,7 +27,7 @@ describe("<ElementsProviderCheckout/>", () => {
     expect(component.asFragment()).toMatchSnapshot();
   });
 
-  test("renders Stripe's Elements provider with clientSecret", async () => {
+  test("renders payment form when clientSecret is present", async () => {
     const component = render(
       <MemoryRouter
         initialEntries={[
