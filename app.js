@@ -147,9 +147,9 @@ app.get("/stripe-client-secret", enforceSignature, async (req, res) => {
 });
 
 // All remaining requests return the React app, so it can handle routing.
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
+// app.get("*", function (request, response) {
+//   response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
