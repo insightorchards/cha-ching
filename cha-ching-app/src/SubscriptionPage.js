@@ -29,6 +29,7 @@ const SubscriptionPage = () => {
         navigate("/checkout", {
           state: {
             clientSecret: data.latest_invoice.payment_intent.client_secret,
+            subscriptionType: subscriptionType
           },
         });
       })
