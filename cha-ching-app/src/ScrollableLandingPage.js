@@ -1,14 +1,24 @@
-import SubscriptionPage from './SubscriptionPage';
-import './ScrollableLandingPage.css'
+import "./ScrollableLandingPage.css";
+import BambooInkPainting from "./BambooInkPainting";
+import Hero from "./Hero";
+import SubscriptionPage from "./SubscriptionPage";
+import Chevron from "./Chevron";
 
 function ScrollableLandingPage() {
-    return(
-        <div>
-            {/* Note: this placeholder and it's styling will be removed and replaced with the new HeroPage component once it's complete */}
-            <div className="placeholderHeroPage">Placeholder for Hero page (scroll to see subscriptions)</div>
-            <SubscriptionPage/>
+  return (
+    <div className="landingPageWrapper">
+      <div className="heroPage">
+        <Hero />
+        <div className="bambooInkPaintingWrapper">
+          <BambooInkPainting />
         </div>
-    )
+        <div className="chevronWrapper">
+          <Chevron />
+        </div>
+      </div>
+      <SubscriptionPage />
+    </div>
+  );
 }
 
 export default ScrollableLandingPage;
