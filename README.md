@@ -5,3 +5,9 @@ A virtual payment method between a web application and a customer/user to allow 
 # Technologies
 
 Javascript, React, Stripe, Jest
+
+## Deploying the Server
+
+```
+git push heroku main
+```
