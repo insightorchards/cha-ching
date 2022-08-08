@@ -3,6 +3,9 @@ import SubscriptionButton from "./SubscriptionButton";
 import { useNavigate } from "react-router-dom";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
+const production = "https://io-cha-ching.herokuapp.com";
+const development = "http://localhost:5000";
+const BASE_URL = process.env.NODE_ENV ? production : development;
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
@@ -20,10 +23,7 @@ const SubscriptionPage = () => {
       }),
     };
 
-    fetch(
-      `http://${process.env.PORT || 5000}/create-incomplete-subscription`,
-      requestOptions,
-    )
+    fetch(`${BASE_URL}/create-incomplete-subscription`, requestOptions)
       .then((res) => res.json())
       .then((data) => {
         navigate("/checkout", {
