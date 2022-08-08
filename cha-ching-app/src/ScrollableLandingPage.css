@@ -15,7 +15,7 @@
   right: 0;
   top: 0;
   width: 100%;
-  z-index: 200;
+  z-index: 1;
 }
 
 .chevronWrapper {
@@ -24,5 +24,4 @@
   position: absolute;
   right: 50px;
   width: 120px;
-  z-index: 300;
 }
