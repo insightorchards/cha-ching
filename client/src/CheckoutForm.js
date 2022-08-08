@@ -5,6 +5,9 @@ import {
 } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
+const production = "https://io-cha-ching-client.herokuapp.com";
+const development = "http://localhost:3000";
+const CLIENT_BASE_URL = process.env.NODE_ENV ? production : development;
 
 function CheckoutForm() {
   const { state } = useLocation();
@@ -20,7 +23,7 @@ function CheckoutForm() {
       .confirmPayment({
         elements,
         confirmParams: {
-          return_url: "http://localhost:3000/success",
+          return_url: `${CLIENT_BASE_URL}/success`,
         },
       })
       .then((data) => console.log("What am I (data):", data))

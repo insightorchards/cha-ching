@@ -5,7 +5,7 @@ import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 const production = "https://io-cha-ching.herokuapp.com";
 const development = "http://localhost:5000";
-const BASE_URL = process.env.NODE_ENV ? production : development;
+const API_BASE_URL = process.env.NODE_ENV ? production : development;
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const SubscriptionPage = () => {
       }),
     };
 
-    fetch(`${BASE_URL}/create-incomplete-subscription`, requestOptions)
+    fetch(`${API_BASE_URL}/create-incomplete-subscription`, requestOptions)
       .then((res) => res.json())
       .then((data) => {
         navigate("/checkout", {
