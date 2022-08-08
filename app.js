@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.json({ test: "hello world!" });
+  res.json({ test: "hello cha-chingers!" });
 });
 
 app.post("/create-incomplete-subscription", async (req, res) => {
