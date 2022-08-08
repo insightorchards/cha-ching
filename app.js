@@ -1,6 +1,5 @@
 const app = require("./server.js");
 const express = require("express");
-const port = 3001;
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
@@ -152,6 +151,7 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
