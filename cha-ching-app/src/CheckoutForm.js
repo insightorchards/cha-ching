@@ -25,16 +25,29 @@ function CheckoutForm() {
     <div className="checkoutFormBackground">
       <div className="header">Cha-ching</div>
       <div className="paymentFormContainer">
-        <form id="payment-form">
-          <div className="emailLabel">Email</div>
-          <input className="emailInput"></input>
+        <div className="paymentForm">
+          {/* <form id="payment-form"> */}
           <div className="paymentElementcontainer">
+          <div className="nameAndEmailInputsContainer">
+            <div className="nameAndEmailInputs">
+              <div className="nameInput">
+                <div className="label">Name</div>
+                <input className="stripeStyledInput"/>
+              </div>
+              <div className="emailInput">
+                <div className="label">Email</div>
+                <input className="stripeStyledInput"/>
+              </div>
+            </div>
+          </div>
+          {/* <div className="paymentElementcontainer"> */}
             <PaymentElement />
           </div>
-        </form>
-        <button onClick={handleSubmit} className="button">
-          Submit
-        </button>
+          {/* </form> */}
+          <button onClick={handleSubmit} className="button">
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );
