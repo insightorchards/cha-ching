@@ -32,7 +32,7 @@ function CheckoutForm() {
     <div className="checkoutFormBackground">
       <div className="header">{`${capitalize(subscriptionType)} Subscription`}</div>
       <div className="paymentFormContainer">
-          <form id="payment-form" className="paymentForm">
+          <form name="payment-form" className="paymentForm">
             <div className="paymentElementcontainer">
             <div className="nameAndEmailInputsContainer">
               <div className="nameAndEmailInputs">

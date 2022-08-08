@@ -4,22 +4,24 @@ import CheckoutForm from "./CheckoutForm";
 import Error from "./Error";
 import Loading from "./Loading";
 import { useLocation } from "react-router-dom";
+import { renderIf } from "./utils";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 const ElementsProviderCheckout = () => {
   const isEmpty = (object) => Object.keys(object).length === 0;
-  const { state: options } = useLocation();
+  const { state: options = {} } = useLocation();
 
-  return !isEmpty(options) ? (
-    options.clientSecret === null ? (
-      <Error />
-    ) : (
-      <Elements options={options} stripe={stripePromise}>
-        <CheckoutForm />
-      </Elements>
-    )
-  ) : (
-    <Loading />
+  return (
+    <>
+      {renderIf(
+        !isEmpty(options) && options.clientSecret,
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>,
+      )}
+      {renderIf(!isEmpty(options) && !options.clientSecret, <Error />)}
+      {renderIf(isEmpty(options), <Loading />)}
+    </>
   );
 };
 

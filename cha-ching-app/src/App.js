@@ -1,10 +1,10 @@
-import Success from "./Success";
-import "./error.css";
 import "./App.css";
+import "./error.css";
 import "./Loading.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ElementsProviderCheckout from "./ElementsProviderCheckout";
 import ScrollableLandingPage from "./ScrollableLandingPage";
+import Success from "./Success";
 
 function App() {
   return (
