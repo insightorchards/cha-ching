@@ -12,6 +12,7 @@
     padding-bottom: 40px;
     padding-top: 40px;
     text-align: center;
+    color: #42434D;
 }
 
 .paymentFormContainer {
@@ -60,6 +61,7 @@
 .label {
     margin-bottom: 3px;
     color: #42434D;
+    font-size: 15px;
 }
 
 .stripeStyledInput {
@@ -72,11 +74,14 @@
     width: 100%;
     flex-grow: 1;
     border: 1px solid #E6E6E6;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 3%), 0px 3px 6px rgb(0 0 0 / 2%);
 }
 
 .button {
-    background-color: thistle;
-    border-radius: 16px;
+    background-color: #9D9D9D;
+    border-radius: 8px;
     cursor: pointer;
-    padding: 4px 16px;
+    padding: 10px 25px;
+    color: white;
+    font-weight: bold;
 }

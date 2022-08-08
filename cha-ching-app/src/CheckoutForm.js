@@ -4,12 +4,19 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css"
+import { useLocation } from 'react-router-dom';
 
 function CheckoutForm() {
+
+  const { state } = useLocation();
+  const subscriptionType = state.subscriptionType
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async () => {
+  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     await stripe
       .confirmPayment({
         elements,
@@ -23,31 +30,28 @@ function CheckoutForm() {
 
   return (
     <div className="checkoutFormBackground">
-      <div className="header">Cha-ching</div>
+      <div className="header">{`${capitalize(subscriptionType)} Subscription`}</div>
       <div className="paymentFormContainer">
-        <div className="paymentForm">
-          {/* <form id="payment-form"> */}
-          <div className="paymentElementcontainer">
-          <div className="nameAndEmailInputsContainer">
-            <div className="nameAndEmailInputs">
-              <div className="nameInput">
-                <div className="label">Name</div>
-                <input className="stripeStyledInput"/>
-              </div>
-              <div className="emailInput">
-                <div className="label">Email</div>
-                <input className="stripeStyledInput"/>
+          <form id="payment-form" className="paymentForm">
+            <div className="paymentElementcontainer">
+            <div className="nameAndEmailInputsContainer">
+              <div className="nameAndEmailInputs">
+                <div className="nameInput">
+                  <div className="label">Name</div>
+                  <input className="stripeStyledInput"/>
+                </div>
+                <div className="emailInput">
+                  <div className="label">Email</div>
+                  <input className="stripeStyledInput"/>
+                </div>
               </div>
             </div>
-          </div>
-          {/* <div className="paymentElementcontainer"> */}
-            <PaymentElement />
-          </div>
-          {/* </form> */}
-          <button onClick={handleSubmit} className="button">
-            Submit
-          </button>
-        </div>
+              <PaymentElement />
+            </div>
+            <button onClick={handleSubmit} className="button">
+              Submit Payment
+            </button>
+          </form>
       </div>
     </div>
   );
