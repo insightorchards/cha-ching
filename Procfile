@@ -1,2 +1,2 @@
-client: cd client/ && npm install && npm run build && node app.js
-server: npm install && npm run start
+client: cd client/ && npm install && npm run build && npm start
+server: npm install && node app.js
