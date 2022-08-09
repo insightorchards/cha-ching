@@ -9,9 +9,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "debug": "nodemon node app.js",
-    "start": "node app.js",
-    "build": "cd client/ && npm install && npm run build"
+    "start": "nodemon node app.js"
   },
   "author": "",
   "license": "ISC",
