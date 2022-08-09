@@ -1,7 +1,5 @@
-import Success from "./Success";
 import "./Error.css";
 import "./App.css";
-import "./error.css";
 import "./Loading.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ElementsProviderCheckout from "./ElementsProviderCheckout";

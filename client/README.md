@@ -84,3 +84,9 @@ To deploy, run the following.
 ```
 git subtree push --prefix client heroku-client main
 ```
+
+If the branch tip is behind the remote, you may have to [force push](https://stackoverflow.com/a/65733058).
+
+```
+git push heroku-client `git subtree split --prefix client main`:main --force
+```
