@@ -32,42 +32,6 @@ exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 
 </DocumentFragment>
 `;
 
-exports[`<ElementsProviderCheckout/> renders Stripe's Elements provider with clientSecret 1`] = `
-<DocumentFragment>
-  <div>
-    <div
-      class="header"
-    >
-      Cha-ching
-    </div>
-    <div
-      class="paymentFormContainer"
-    >
-      <form
-        name="payment-form"
-      >
-        <div
-          class="emailLabel"
-        >
-          Email
-        </div>
-        <input
-          class="emailInput"
-        />
-        <div>
-          <div />
-        </div>
-      </form>
-      <button
-        class="button"
-      >
-        Submit
-      </button>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is present 1`] = `
 <DocumentFragment>
   <div
