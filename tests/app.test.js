@@ -12,7 +12,7 @@ describe("app", () => {
       );
       expect(response.body).toEqual(
         expect.objectContaining({
-          test: "hello world!",
+          test: "hello cha-chingers!",
         }),
       );
     });
