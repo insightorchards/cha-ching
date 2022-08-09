@@ -70,7 +70,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ## Deploying the Client
-We deploy the app with [heroku](https://www.heroku.com). The front and back end are deployed separately. 
+
+We deploy the app with [heroku](https://www.heroku.com). The front and back end are deployed separately. See [server README](../README.md#deploying-the-server) for instructions on how to deploy the server.
+
+The first time you deploy, you will have to set the heroku remote for the client application. This creates a new remote called `heroku-client`.
+
+```
+heroku git:remote --remote heroku-client -a client
+```
+
+To deploy, run the following.
+
 ```
 git subtree push --prefix client heroku-client main
 ```
