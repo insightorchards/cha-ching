@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "nodemon node app.js",
+    "dev": "nodemon node app.js",
+    "start": "node app.js",
     "build": "cd client/ && npm install && npm run build"
   },
   "author": "",
