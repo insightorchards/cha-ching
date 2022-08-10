@@ -40,31 +40,58 @@ exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is p
     <div
       class="header"
     >
-      Cha-ching
+       Subscription
     </div>
     <div
       class="paymentFormContainer"
     >
       <form
+        class="paymentForm"
         name="payment-form"
       >
         <div
-          class="emailLabel"
+          class="paymentElementcontainer"
         >
-          Email
-        </div>
-        <input
-          class="emailInput"
-        />
-        <div>
+          <div
+            class="nameAndEmailInputsContainer"
+          >
+            <div
+              class="nameAndEmailInputs"
+            >
+              <div
+                class="nameInput"
+              >
+                <div
+                  class="label"
+                >
+                  Name
+                </div>
+                <input
+                  class="stripeStyledInput"
+                />
+              </div>
+              <div
+                class="emailInput"
+              >
+                <div
+                  class="label"
+                >
+                  Email
+                </div>
+                <input
+                  class="stripeStyledInput"
+                />
+              </div>
+            </div>
+          </div>
           <div />
         </div>
+        <button
+          class="submitButton"
+        >
+          Submit Payment
+        </button>
       </form>
-      <button
-        class="button"
-      >
-        Submit
-      </button>
     </div>
   </div>
 </DocumentFragment>

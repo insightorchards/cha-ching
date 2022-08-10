@@ -12,7 +12,7 @@ const CLIENT_BASE_URL =
 
 function CheckoutForm() {
   const { state } = useLocation();
-  const subscriptionType = state.subscriptionType;
+  const subscriptionType = state.subscriptionType | "";
   const subscriptionPrice = state.subscriptionPrice;
   const stripe = useStripe();
   const elements = useElements();
@@ -57,7 +57,7 @@ function CheckoutForm() {
             </div>
             <PaymentElement />
           </div>
-          <button onClick={handleSubmit} className="button">
+          <button onClick={handleSubmit} className="submitButton">
             Submit Payment
           </button>
         </form>
