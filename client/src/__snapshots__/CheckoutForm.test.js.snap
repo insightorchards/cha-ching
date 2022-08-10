@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="checkoutFormBackground"
+  >
+    <div
+      class="header"
+    >
+      Super Deluxe VIP Subscription
+    </div>
+    <div
+      class="paymentFormContainer"
+    >
+      <form
+        class="paymentForm"
+        name="payment-form"
+      >
+        <div
+          class="paymentElementcontainer"
+        >
+          <div
+            class="nameAndEmailInputsContainer"
+          >
+            <div
+              class="nameAndEmailInputs"
+            >
+              <div
+                class="nameInput"
+              >
+                <div
+                  class="label"
+                >
+                  Name
+                </div>
+                <input
+                  class="stripeStyledInput"
+                />
+              </div>
+              <div
+                class="emailInput"
+              >
+                <div
+                  class="label"
+                >
+                  Email
+                </div>
+                <input
+                  class="stripeStyledInput"
+                />
+              </div>
+            </div>
+          </div>
+          <div />
+        </div>
+        <button
+          class="submitButton"
+        >
+          Submit Payment
+        </button>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
