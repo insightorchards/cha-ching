@@ -69,3 +69,41 @@ test("calls stripe.confirmPayment on submit", async () => {
     expect(mockConfirmPayment).toHaveBeenCalled();
   });
 });
+
+describe("submit button", () => {
+  test("when stripe is not defined, submit button is disabled", async () => {
+    const mockStripe = undefined;
+
+    jest.mock("@stripe/react-stripe-js", () => {
+      const stripe = jest.requireActual("@stripe/react-stripe-js");
+      return {
+        ...stripe,
+        useStripe: {
+          mockStripe,
+        },
+      };
+    });
+
+    render(
+      <MemoryRouter
+        initialEntries={[
+          {
+            pathname: "/checkout",
+            state: { subscriptionType: "Super Deluxe VIP" },
+          },
+        ]}
+      >
+        <Elements stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      </MemoryRouter>,
+    );
+
+    expect(
+      await screen.findByRole("button", { name: "Submit Payment" }),
+    ).toBeDisabled();
+  });
+  test("when form is not filled out, button is disabled", async () => {});
+  test("when form is filled out, button is enabled", async () => {});
+  test("while form is submitting, button is disabled and shows loading spinner", async () => {});
+});

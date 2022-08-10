@@ -57,7 +57,11 @@ function CheckoutForm() {
             </div>
             <PaymentElement />
           </div>
-          <button onClick={handleSubmit} className="submitButton">
+          <button
+            disabled={!stripe}
+            onClick={handleSubmit}
+            className="submitButton"
+          >
             Submit Payment
           </button>
         </form>
