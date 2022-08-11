@@ -35,10 +35,37 @@ Now you will have the latest changes from the upstream.
 
 Proceed with resolving conflicts with a rebase or merge, whichever you prefer.
 
-## Deploying the Server
+## Deploying the App
 
-We deploy the app with [heroku](https://www.heroku.com). The front and back end are deployed separately. See [client README](./client/README.md#deploying-the-client) for instructions on how to deploy the client.
+We deploy the app with [heroku](https://www.heroku.com). The front and back end are deployed separately.
+
+Add heroku remotes
+
+```
+git remote add heroku https://git.heroku.com/io-cha-ching.git
+git remote add heroku-client https://git.heroku.com/io-cha-ching-client.git
+```
+
+The first time you deploy, you will have to set the heroku remote for the client application. This creates a new remote called `heroku-client`.
+
+```
+heroku git:remote --remote heroku-client -a client
+```
+
+#### Deploy the client
+
+```
+git subtree push --prefix client heroku-client main
+```
+
+#### Deploy the server
 
 ```
 git push heroku main
+```
+
+If the branch tip is behind the remote, you may have to [force push](https://stackoverflow.com/a/65733058).
+
+```
+git push heroku-client `git subtree split --prefix client main`:main --force
 ```
