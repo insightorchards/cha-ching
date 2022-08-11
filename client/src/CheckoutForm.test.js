@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
 
+afterEach(() => jest.mockRestore());
 test("renders", async () => {
   const component = render(
     <MemoryRouter
@@ -70,6 +71,42 @@ test("calls stripe.confirmPayment on submit", async () => {
   });
 });
 
+test("does not calls stripe.confirmPayment on submit if stripe is not defined", async () => {
+  const mockStripe = undefined;
+
+  jest.mock("@stripe/react-stripe-js", () => {
+    const stripe = jest.requireActual("@stripe/react-stripe-js");
+    return {
+      ...stripe,
+      useStripe: {
+        mockStripe,
+      },
+    };
+  });
+
+  render(
+    <MemoryRouter
+      initialEntries={[
+        {
+          pathname: "/checkout",
+          state: { subscriptionType: "Super Deluxe VIP" },
+        },
+      ]}
+    >
+      <Elements stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
+    </MemoryRouter>,
+  );
+
+  userEvent.click(
+    await screen.findByRole("button", { name: "Submit Payment" }),
+  );
+  waitFor(() => {
+    expect(mockConfirmPayment).not.toHaveBeenCalled();
+  });
+});
+
 describe("submit button", () => {
   test("when stripe is not defined, submit button is disabled", async () => {
     const mockStripe = undefined;
@@ -103,7 +140,44 @@ describe("submit button", () => {
       await screen.findByRole("button", { name: "Submit Payment" }),
     ).toBeDisabled();
   });
-  test("when form is not filled out, button is disabled", async () => {});
+  test("when form is not filled out, button is disabled", async () => {
+    const mockConfirmPayment = jest.fn();
+    const mockStripe = () => ({
+      confirmPayment: mockConfirmPayment,
+    });
+
+    jest.mock("@stripe/react-stripe-js", () => {
+      const stripe = jest.requireActual("@stripe/react-stripe-js");
+      return {
+        ...stripe,
+        useStripe: {
+          mockStripe,
+        },
+      };
+    });
+
+    render(
+      <MemoryRouter
+        initialEntries={[
+          {
+            pathname: "/checkout",
+            state: { subscriptionType: "Super Deluxe VIP" },
+          },
+        ]}
+      >
+        <Elements stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      </MemoryRouter>,
+    );
+
+    userEvent
+      .click(await screen.findByRole("button", { name: "Submit Payment" }))
+      .toBeDisabled();
+    waitFor(() => {
+      expect(mockConfirmPayment).toHaveBeenCalled();
+    });
+  });
   test("when form is filled out, button is enabled", async () => {});
   test("while form is submitting, button is disabled and shows loading spinner", async () => {});
 });

@@ -23,6 +23,11 @@ function CheckoutForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
     await stripe
       .confirmPayment({
         elements,
