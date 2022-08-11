@@ -1,8 +1,16 @@
 .successMessage {
-  color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #626366;
   font-family: Arial, Helvetica, sans-serif;
   font-size: xx-large;
   font-weight: 700;
+  background-image: url("./checkoutFormBackground.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .successMessageContainer {
   align-items: center;
