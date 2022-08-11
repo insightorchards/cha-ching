@@ -46,12 +46,6 @@ git remote add heroku https://git.heroku.com/io-cha-ching.git
 git remote add heroku-client https://git.heroku.com/io-cha-ching-client.git
 ```
 
-The first time you deploy, you will have to set the heroku remote for the client application. This creates a new remote called `heroku-client`.
-
-```
-heroku git:remote --remote heroku-client -a client
-```
-
 #### Deploy the client
 
 ```
