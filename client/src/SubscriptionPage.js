@@ -3,9 +3,10 @@ import SubscriptionButton from "./SubscriptionButton";
 import { useNavigate } from "react-router-dom";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
-const production = "https://io-cha-ching.herokuapp.com";
+const production = "https://zen-blossom-api.herokuapp.com";
 const development = "http://localhost:5000";
-const API_BASE_URL = process.env.NODE_ENV ? production : development;
+const API_BASE_URL =
+  process.env.NODE_ENV === "production" ? production : development;
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const SubscriptionPage = () => {
         navigate("/checkout", {
           state: {
             clientSecret: data.latest_invoice.payment_intent.client_secret,
-            subscriptionType: subscriptionType
+            subscriptionType: subscriptionType,
           },
         });
       })

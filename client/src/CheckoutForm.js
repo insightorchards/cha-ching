@@ -5,9 +5,10 @@ import {
 } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
-const production = "https://io-cha-ching-client.herokuapp.com";
+const production = "https://zen-blossom.herokuapp.com";
 const development = "http://localhost:3000";
-const CLIENT_BASE_URL = process.env.NODE_ENV ? production : development;
+const CLIENT_BASE_URL =
+  process.env.NODE_ENV === "production" ? production : development;
 
 function CheckoutForm() {
   const { state } = useLocation();
