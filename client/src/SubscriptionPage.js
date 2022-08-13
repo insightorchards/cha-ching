@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 const production = "https://zen-blossom-api.herokuapp.com";
-const development = "http://localhost:5000";
+const development = "http://localhost:3001";
 const API_BASE_URL =
   process.env.NODE_ENV === "production" ? production : development;
 
