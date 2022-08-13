@@ -1,7 +1,8 @@
 import "./ScrollableLandingPage.css";
 import BambooInkPainting from "./BambooInkPainting";
 import Hero from "./Hero";
-import SubscriptionPage from "./SubscriptionPage";
+// import SubscriptionPage from "./SubscriptionPage";
+import SubscriptionPageNew from "./SubscriptionPageNew";
 import Chevron from "./Chevron";
 
 function ScrollableLandingPage() {
@@ -16,7 +17,8 @@ function ScrollableLandingPage() {
           <Chevron />
         </div>
       </div>
-      <SubscriptionPage />
+      {/* <SubscriptionPage /> */}
+      <SubscriptionPageNew/>
     </div>
   );
 }
