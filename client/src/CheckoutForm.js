@@ -5,6 +5,7 @@ import {
 } from "@stripe/react-stripe-js";
 import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 const production = "https://zen-blossom.herokuapp.com";
 const development = "http://localhost:3000";
 const CLIENT_BASE_URL =
@@ -14,19 +15,16 @@ function CheckoutForm() {
   const { state } = useLocation();
   const subscriptionType = state.subscriptionType | "";
   const subscriptionPrice = state.subscriptionPrice;
+  const [loading, setLoading] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
-
-  console.log(state.subscriptionPrice);
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!stripe || !elements) {
-      return;
-    }
+    setLoading(true);
 
     await stripe
       .confirmPayment({
@@ -35,9 +33,13 @@ function CheckoutForm() {
           return_url: `${CLIENT_BASE_URL}/success`,
         },
       })
-      .then((data) => console.log("What am I (data):", data))
-      .catch((err) => console.log("I am an error", err));
+      .then((data) => console.log("What am I (data):", loading))
+      .catch((err) => {
+        setLoading(false);
+        console.log("I am an error", err);
+      });
   };
+  console.log("loading", loading);
 
   return (
     <div className="checkoutFormBackground">
@@ -63,11 +65,11 @@ function CheckoutForm() {
             <PaymentElement />
           </div>
           <button
-            disabled={!stripe}
+            // disabled={!stripe || loading}
             onClick={handleSubmit}
             className="submitButton"
           >
-            Submit Payment
+            {loading ? "Loading" : "Submit Payment"}
           </button>
         </form>
       </div>
