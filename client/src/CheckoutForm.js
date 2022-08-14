@@ -6,6 +6,7 @@ import {
 import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import LoadingSpinner from "./Loading";
 const production = "https://zen-blossom.herokuapp.com";
 const development = "http://localhost:3000";
 const CLIENT_BASE_URL =
@@ -26,6 +27,9 @@ function CheckoutForm() {
     e.preventDefault();
     setLoading(true);
 
+    if (!stripe || !elements) {
+      return;
+    }
     await stripe
       .confirmPayment({
         elements,
@@ -33,13 +37,15 @@ function CheckoutForm() {
           return_url: `${CLIENT_BASE_URL}/success`,
         },
       })
-      .then((data) => console.log("What am I (data):", loading))
+      .then((data) => {
+        if (data.error) {
+          setLoading(false);
+        }
+      })
       .catch((err) => {
         setLoading(false);
-        console.log("I am an error", err);
       });
   };
-  console.log("loading", loading);
 
   return (
     <div className="checkoutFormBackground">
@@ -65,11 +71,11 @@ function CheckoutForm() {
             <PaymentElement />
           </div>
           <button
-            // disabled={!stripe || loading}
+            disabled={loading}
             onClick={handleSubmit}
             className="submitButton"
           >
-            {loading ? "Loading" : "Submit Payment"}
+            {loading ? <LoadingSpinner /> : "Submit Payment"}
           </button>
         </form>
       </div>
