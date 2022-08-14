@@ -13,8 +13,11 @@ const CLIENT_BASE_URL =
 function CheckoutForm() {
   const { state } = useLocation();
   const subscriptionType = state.subscriptionType;
+  const subscriptionPrice = state.subscriptionPrice;
   const stripe = useStripe();
   const elements = useElements();
+
+  console.log(state.subscriptionPrice);
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -33,9 +36,10 @@ function CheckoutForm() {
 
   return (
     <div className="checkoutFormBackground">
-      <div className="header">{`${capitalize(
-        subscriptionType,
-      )} Subscription`}</div>
+      <div className="header">
+        {`${capitalize(subscriptionType)} Subscription`}
+      </div>
+      <div className="price">{`$${subscriptionPrice} / mo`}</div>
       <div className="paymentFormContainer">
         <form name="payment-form" className="paymentForm">
           <div className="paymentElementcontainer">
