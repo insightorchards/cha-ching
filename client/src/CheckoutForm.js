@@ -17,8 +17,6 @@ function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  console.log(state.subscriptionPrice);
-
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
   const handleSubmit = async (e) => {
