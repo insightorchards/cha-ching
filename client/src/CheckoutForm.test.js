@@ -15,7 +15,10 @@ test("renders", async () => {
       initialEntries={[
         {
           pathname: "/checkout",
-          state: { subscriptionType: "Super Deluxe VIP" },
+          state: {
+            subscriptionType: "Super Deluxe VIP",
+            subscriptionPrice: 66,
+          },
         },
       ]}
     >
@@ -39,7 +42,10 @@ test("calls shows loading spinner on submit", async () => {
       initialEntries={[
         {
           pathname: "/checkout",
-          state: { subscriptionType: "Super Deluxe VIP" },
+          state: {
+            subscriptionType: "Super Deluxe VIP",
+            subscriptionPrice: 66,
+          },
         },
       ]}
     >
@@ -56,4 +62,5 @@ test("calls shows loading spinner on submit", async () => {
     await screen.findByRole("button", { name: "Submit Payment" }),
   );
   expect(await screen.findByRole("alert")).toBeVisible();
+  expect(await screen.findByRole("button")).toBeDisabled();
 });

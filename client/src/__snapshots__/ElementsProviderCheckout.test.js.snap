@@ -21,13 +21,14 @@ exports[`<ElementsProviderCheckout/> renders Error when clientSecret is null 1`]
 exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 1`] = `
 <DocumentFragment>
   <div
-    class="spinnerWrapper"
+    aria-live="polite"
+    class="lds-ellipsis"
+    role="alert"
   >
-    <div
-      aria-live="polite"
-      class="spinnerContainer"
-      role="alert"
-    />
+    <div />
+    <div />
+    <div />
+    <div />
   </div>
 </DocumentFragment>
 `;
@@ -41,6 +42,11 @@ exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is p
       class="header"
     >
        Subscription
+    </div>
+    <div
+      class="price"
+    >
+      $undefined / mo
     </div>
     <div
       class="paymentFormContainer"

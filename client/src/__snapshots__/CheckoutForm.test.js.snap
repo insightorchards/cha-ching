@@ -11,6 +11,11 @@ exports[`renders 1`] = `
       Super Deluxe VIP Subscription
     </div>
     <div
+      class="price"
+    >
+      $66 / mo
+    </div>
+    <div
       class="paymentFormContainer"
     >
       <form

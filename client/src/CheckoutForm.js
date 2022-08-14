@@ -7,6 +7,7 @@ import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LoadingSpinner from "./Loading";
+import { renderIf } from "./utils";
 const production = "https://zen-blossom.herokuapp.com";
 const development = "http://localhost:3000";
 const CLIENT_BASE_URL =
@@ -14,7 +15,7 @@ const CLIENT_BASE_URL =
 
 function CheckoutForm() {
   const { state } = useLocation();
-  const subscriptionType = state.subscriptionType;
+  const subscriptionType = state.subscriptionType || "";
   const subscriptionPrice = state.subscriptionPrice;
   const [loading, setLoading] = useState(false);
 
