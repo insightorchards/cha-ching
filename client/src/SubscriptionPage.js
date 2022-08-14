@@ -11,6 +11,7 @@ const API_BASE_URL =
 const SubscriptionPage = () => {
   const navigate = useNavigate();
   const [subscriptionType, setSubscriptionType] = useState("starter");
+  const [subscriptionPrice, setSubscriptionPrice] = useState(55);
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -20,7 +21,7 @@ const SubscriptionPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionType === "monthly" ? 1200 : 10000,
+        amount: subscriptionPrice,
       }),
     };
 
@@ -31,6 +32,7 @@ const SubscriptionPage = () => {
           state: {
             clientSecret: data.latest_invoice.payment_intent.client_secret,
             subscriptionType: subscriptionType,
+            subscriptionPrice: subscriptionPrice,
           },
         });
       })
@@ -44,17 +46,26 @@ const SubscriptionPage = () => {
         <div className="subscriptionButtonsContainer">
           <div className="subscriptionButtons">
             <SubscriptionButton
-              onClick={() => setSubscriptionType("starter")}
+              onClick={() => {
+                setSubscriptionType("starter");
+                setSubscriptionPrice(55);
+              }}
               selected={subscriptionType === "starter"}
               text={`Starter`}
             />
             <SubscriptionButton
-              onClick={() => setSubscriptionType("intermediate")}
+              onClick={() => {
+                setSubscriptionType("intermediate");
+                setSubscriptionPrice(115);
+              }}
               selected={subscriptionType === "intermediate"}
               text={`Intermediate`}
             />
             <SubscriptionButton
-              onClick={() => setSubscriptionType("master")}
+              onClick={() => {
+                setSubscriptionType("master");
+                setSubscriptionPrice(205);
+              }}
               selected={subscriptionType === "master"}
               text={`Master`}
             />
