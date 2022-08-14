@@ -14,7 +14,7 @@ const CLIENT_BASE_URL =
 
 function CheckoutForm() {
   const { state } = useLocation();
-  const subscriptionType = state.subscriptionType | "";
+  const subscriptionType = state.subscriptionType;
   const subscriptionPrice = state.subscriptionPrice;
   const [loading, setLoading] = useState(false);
 
