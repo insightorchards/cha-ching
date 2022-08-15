@@ -1,4 +1,4 @@
-const ContinueIcon = () => {
+const ContinueIcon = (fill = "white") => {
   return (
     <svg
       width="65"

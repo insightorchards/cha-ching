@@ -8,11 +8,11 @@ const SubscriptionSelection = (onClick) => {
       <div classname="pageContents">
         <div className="header">Select Your Subscription</div>
         <div className="cards"></div>
-        <div onClick={() => {}} className="submitBar">
+        <button onClick={() => {}} className="button">
           Select a Subscription Type
           <HSpacer />
-          <ContinueIcon />
-        </div>
+          <ContinueIcon color="#e4987c" />
+        </button>
         <div className="footer"></div>
       </div>
     </div>
