@@ -3,10 +3,6 @@ import SubscriptionButton from "./SubscriptionButton";
 import { useNavigate } from "react-router-dom";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
-const production = "https://zen-blossom-api.herokuapp.com";
-const development = "http://localhost:5000";
-const API_BASE_URL =
-  process.env.NODE_ENV === "production" ? production : development;
 
 const SubscriptionPage = () => {
   const navigate = useNavigate();
@@ -25,7 +21,10 @@ const SubscriptionPage = () => {
       }),
     };
 
-    fetch(`${API_BASE_URL}/create-incomplete-subscription`, requestOptions)
+    fetch(
+      `${process.env.API_BASE_URL}/create-incomplete-subscription`,
+      requestOptions,
+    )
       .then((res) => res.json())
       .then((data) => {
         navigate("/checkout", {
