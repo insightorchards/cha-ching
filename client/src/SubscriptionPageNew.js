@@ -5,6 +5,8 @@ const SubscriptionPageNew = () => {
     return(
         <div className="mainContainer">
             <SubscriptionDetailsCard />
+            <SubscriptionDetailsCard />
+            <SubscriptionDetailsCard />
         </div>
     )
 };
