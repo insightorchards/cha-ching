@@ -1,39 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ElementsProviderCheckout/> renders Error when clientSecret is null 1`] = `
-<DocumentFragment>
-  <div
-    class="errorWrapper"
-  >
-    <div
-      class="errorContainer"
-    >
-      <div
-        class="errorText"
-      >
-        error
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 1`] = `
-<DocumentFragment>
-  <div
-    aria-live="polite"
-    class="lds-ellipsis"
-    role="alert"
-  >
-    <div />
-    <div />
-    <div />
-    <div />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is present 1`] = `
+exports[`renders 1`] = `
 <DocumentFragment>
   <div
     class="checkoutFormBackground"
@@ -41,12 +8,12 @@ exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is p
     <div
       class="header"
     >
-       Subscription
+      Super Deluxe VIP Subscription
     </div>
     <div
       class="price"
     >
-      $undefined / mo
+      $66 / mo
     </div>
     <div
       class="paymentFormContainer"
