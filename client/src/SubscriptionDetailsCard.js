@@ -19,6 +19,7 @@ const SubscriptionDetailsCard = ({ id, selectedCardId }) => {
     const determineStylingBasedOnUserAction = () => {
         if(hovered && !selected) { return "hoveredStyling" }
         if(selected) { return "selectedStyling" }
+        if(!hovered && !selected) { return ""}
     };
 
     return(
@@ -26,6 +27,7 @@ const SubscriptionDetailsCard = ({ id, selectedCardId }) => {
             className={`${determineStylingBasedOnUserAction()} container`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            data-testid="subscription-card"
         />
     )
 };
