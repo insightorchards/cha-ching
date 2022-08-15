@@ -36,7 +36,7 @@ test("renders", async () => {
   expect(component.asFragment()).toMatchSnapshot();
 });
 
-test("calls shows loading spinner on submit", async () => {
+test("shows loading spinner on submit", async () => {
   render(
     <MemoryRouter
       initialEntries={[
