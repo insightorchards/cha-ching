@@ -30,7 +30,7 @@ function CheckoutForm() {
       .confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${process.env.CLIENT_BASE_URL}/success`,
+          return_url: `${process.env.REACT_APP_CLIENT_BASE_URL}/success`,
         },
       })
       .then((data) => {

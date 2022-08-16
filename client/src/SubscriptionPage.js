@@ -17,12 +17,12 @@ const SubscriptionPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionPrice,
+        amount: subscriptionType === "monthly" ? 1200 : 10000,
       }),
     };
 
     fetch(
-      `${process.env.API_BASE_URL}/create-incomplete-subscription`,
+      `${process.env.REACT_APP_API_BASE_URL}/create-incomplete-subscription`,
       requestOptions,
     )
       .then((res) => res.json())
