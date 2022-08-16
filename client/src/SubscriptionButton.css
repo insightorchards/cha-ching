@@ -1,4 +1,3 @@
-
 .SubscriptionButton {
   background-color: rgb(253, 200, 206, 0.42);
   border-radius: 20px;
@@ -8,8 +7,9 @@
   font-weight: 500;
   height: 50px;
   width: 180px;
+  z-index: 10;
 }
 
 .highlightedButton {
-  background-color: #FDC8CE;
+  background-color: #fdc8ce;
 }

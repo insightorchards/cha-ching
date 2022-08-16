@@ -7,11 +7,6 @@ import "./CheckoutForm.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import LoadingSpinner from "./Loading";
-import { renderIf } from "./utils";
-const production = "https://zen-blossom.herokuapp.com";
-const development = "http://localhost:3000";
-const CLIENT_BASE_URL =
-  process.env.NODE_ENV === "production" ? production : development;
 
 function CheckoutForm() {
   const { state } = useLocation();
@@ -35,7 +30,7 @@ function CheckoutForm() {
       .confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${CLIENT_BASE_URL}/success`,
+          return_url: `${process.env.REACT_APP_CLIENT_BASE_URL}/success`,
         },
       })
       .then((data) => {
