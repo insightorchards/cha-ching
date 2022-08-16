@@ -46,20 +46,24 @@ git remote add heroku https://git.heroku.com/io-cha-ching.git
 git remote add heroku-client https://git.heroku.com/io-cha-ching-client.git
 ```
 
+### Time to deploy
+
+Make sure to deploy from the upstream `main`, rather than your forked `main`. After merging your PR, fetch the upstream and checkout to it: `git fetch upstream && git checkout upstream/main`. Then run your deploy commands from this detached head state.
+
 #### Deploy the client
 
 ```
 git subtree push --prefix client heroku-client main
 ```
 
-#### Deploy the server
-
-```
-git push heroku main
-```
-
 If the branch tip is behind the remote, you may have to [force push](https://stackoverflow.com/a/65733058).
 
 ```
 git push heroku-client `git subtree split --prefix client main`:main --force
+```
+
+#### Deploy the server
+
+```
+git push heroku main
 ```
