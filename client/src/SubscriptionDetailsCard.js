@@ -1,5 +1,6 @@
 import "./SubscriptionDetailsCard.css";
 import { useState, useEffect } from "react";
+import CircleCheck from "./CircleCheck";
 
 const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter", subscriptionDetails=["daily flower delivery", "scissors", "kenzan"] }) => {
     const [hovered, setHovered] = useState(false);
@@ -31,12 +32,19 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter
             data-testid="subscription-card"
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
-            <ul className="subscriptionDetailsBulletedList">
+            <div className="subscriptionDetailsBulletedList">
             {subscriptionDetails.map((item, i) => {
-                return <li key={i}>Subsctiption detail</li>
+                return (
+                    // <div className="bulletedListItemContainer">
+                        <div className="bulletedListItem">
+                            <div className="checkmark"><CircleCheck/></div>
+                            <li className="text" key={i}>{item}</li>
+                        </div>
+                    // </div>
+                )
             })}
 
-            </ul>
+            </div>
         </div>
     )
 };
