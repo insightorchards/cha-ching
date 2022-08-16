@@ -1,7 +1,7 @@
 import "./SubscriptionDetailsCard.css";
 import { useState, useEffect } from "react";
 
-const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter" }) => {
+const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter", subscriptionDetails=["daily flower delivery", "scissors", "kenzan"] }) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
 
@@ -31,6 +31,12 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter
             data-testid="subscription-card"
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
+            <ul className="subscriptionDetailsBulletedList">
+            {subscriptionDetails.map((item, i) => {
+                return <li key={i}>Subsctiption detail</li>
+            })}
+
+            </ul>
         </div>
     )
 };
