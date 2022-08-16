@@ -17,7 +17,7 @@ const SubscriptionPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionType === "monthly" ? 1200 : 10000,
+        amount: subscriptionPrice,
       }),
     };
 
