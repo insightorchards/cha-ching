@@ -2,7 +2,19 @@ import "./SubscriptionDetailsCard.css";
 import { useState, useEffect } from "react";
 import CircleCheck from "./CircleCheck";
 
-const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add name here", subscriptionDetails=["Add descriptive bullet point text about the subscription here"] }) => {
+const SUBSCRIPTION_INTERVALS = {
+    month: "monthly",
+    year: "yearly",
+};
+
+const SubscriptionDetailsCard = ({
+    id,
+    selectedCardId,
+    subscriptionName="Add name here",
+    price=200,
+    interval=SUBSCRIPTION_INTERVALS.month,
+    subscriptionDetails=["Add descriptive bullet point text about the subscription here"]
+}) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
 
@@ -24,9 +36,6 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add nam
         if(!hovered && !selected) { return ""}
     };
 
-    //TODO: This number is not always unique find better method for generating a unique key value
-    const uniqueId = Math.floor(Math.random() * 100)
-
     return(
         <div
             className={`${determineStylingBasedOnUserAction()} container`}
@@ -35,14 +44,16 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add nam
             data-testid="subscription-card"
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
+            <div>{`$${price} / ${interval}`}</div>
             <div className="subscriptionDetailsBulletedList">
-            {subscriptionDetails.map((item) => {
+            {subscriptionDetails.map((item, i) => {
                 return (
-                    <ul className="bulletedListItem" key={uniqueId}>
+                    //TODO: find better method for generating a unique key value
+                    <ul className="bulletedListItem" key={i}>
                         <div className="bulletPointIcon">
                             <CircleCheck/>
                         </div>
-                        <li className="bulletPointText" key={uniqueId}>{item}</li>
+                        <li className="bulletPointText" key={i}>{item}</li>
                     </ul>
                 )
             })}
