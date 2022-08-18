@@ -4,9 +4,9 @@ import SubscriptionDetailsCard from "./SubscriptionDetailsCard";
 const SubscriptionPageNew = () => {
     return(
         <div className="mainContainer">
-            <SubscriptionDetailsCard />
-            <SubscriptionDetailsCard />
-            <SubscriptionDetailsCard />
+            <SubscriptionDetailsCard subscriptionName="Starter"/>
+            <SubscriptionDetailsCard subscriptionName="Intermediate"/>
+            <SubscriptionDetailsCard subscriptionName="Master"/>
         </div>
     )
 };
