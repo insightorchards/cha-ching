@@ -24,6 +24,9 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add nam
         if(!hovered && !selected) { return ""}
     };
 
+    //TODO: This number is not always unique find better method for generating a unique key value
+    const uniqueId = Math.floor(Math.random() * 100)
+
     return(
         <div
             className={`${determineStylingBasedOnUserAction()} container`}
@@ -33,13 +36,13 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add nam
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
             <div className="subscriptionDetailsBulletedList">
-            {subscriptionDetails.map((item, i) => {
+            {subscriptionDetails.map((item) => {
                 return (
-                    <ul className="bulletedListItem">
+                    <ul className="bulletedListItem" key={uniqueId}>
                         <div className="bulletPointIcon">
                             <CircleCheck/>
                         </div>
-                        <li className="bulletPointText" key={i}>{item}</li>
+                        <li className="bulletPointText" key={uniqueId}>{item}</li>
                     </ul>
                 )
             })}
