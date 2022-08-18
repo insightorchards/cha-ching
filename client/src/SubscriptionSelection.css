@@ -57,7 +57,7 @@
   line-height: 80px;
   text-align: center;
   text-shadow: 1px 1px 2px black;
-  transition-duration: 0.4s;
+  /* transition-duration: 0.4s; */
   width: 100vw;
 }
 

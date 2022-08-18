@@ -1,4 +1,5 @@
-const ContinueIcon = (fill = "white") => {
+const ContinueIcon = ({ color = "white" }) => {
+  console.log(color);
   return (
     <svg
       width="65"
@@ -13,7 +14,7 @@ const ContinueIcon = (fill = "white") => {
           cy="28.5"
           r="25.5"
           transform="rotate(-90 32.5 28.5)"
-          stroke="white"
+          stroke={color}
           stroke-width="6"
           shape-rendering="crispEdges"
         />
@@ -23,7 +24,7 @@ const ContinueIcon = (fill = "white") => {
           fill-rule="evenodd"
           clip-rule="evenodd"
           d="M13.0234 28.7375L25.5599 41.6488L25.5602 41.6485L28.9359 45.125L44.8484 28.7375L28.9359 12.35L25.5598 15.8269L25.5594 15.8264L13.0234 28.7375ZM25.5598 15.8269L13.0234 28.7375L25.5602 41.6485L38.0967 28.7379L25.5598 15.8269Z"
-          fill="white"
+          fill={color}
         />
       </g>
       <defs>
