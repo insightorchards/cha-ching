@@ -20,7 +20,7 @@ const SubscriptionSelection = (onClick) => {
         >
           Select a Subscription Type
           <HSpacer />
-          <ContinueIcon color={onHover ? "#e4987c" : "white"} />
+          <ContinueIcon color={onHover ? "#e4987c" : color} />
         </button>
         <div className="footer"></div>
       </div>
