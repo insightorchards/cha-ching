@@ -2,7 +2,7 @@ import "./SubscriptionDetailsCard.css";
 import { useState, useEffect } from "react";
 import CircleCheck from "./CircleCheck";
 
-const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter", subscriptionDetails=["daily flower delivery", "scissors", "kenzan"] }) => {
+const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="Add name here", subscriptionDetails=["Add descriptive bullet point text about the subscription here"] }) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
 
@@ -35,12 +35,12 @@ const SubscriptionDetailsCard = ({ id, selectedCardId, subscriptionName="starter
             <div className="subscriptionDetailsBulletedList">
             {subscriptionDetails.map((item, i) => {
                 return (
-                    // <div className="bulletedListItemContainer">
-                        <div className="bulletedListItem">
-                            <div className="checkmark"><CircleCheck/></div>
-                            <li className="text" key={i}>{item}</li>
+                    <ul className="bulletedListItem">
+                        <div className="bulletPointIcon">
+                            <CircleCheck/>
                         </div>
-                    // </div>
+                        <li className="bulletPointText" key={i}>{item}</li>
+                    </ul>
                 )
             })}
 
