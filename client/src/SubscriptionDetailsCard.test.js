@@ -18,7 +18,7 @@ describe("SubscriptionDetailsCard", () => {
     })
     describe("displays card content correctly", () => {
         it("displays subscription header", () => {
-            render(<SubscriptionDetailsCard header={"starter"} />)
+            render(<SubscriptionDetailsCard subscriptionName="starter"/>)
             expect(screen.getByText("Starter")).toBeVisible();
         })
         it("displays bulleted list", () => {
@@ -26,6 +26,10 @@ describe("SubscriptionDetailsCard", () => {
             expect(screen.getByText("daily flower delivery")).toBeVisible();
             expect(screen.getByText("scissors")).toBeVisible();
             expect(screen.getByText("kenzan")).toBeVisible();
+        })
+        it("displays price and interval of subscription", () => {
+            render(<SubscriptionDetailsCard price="200" interval="monthly" />)
+            expect(screen.getByText("$200 / monthly")).toBeVisible();
         })
     });
 });
