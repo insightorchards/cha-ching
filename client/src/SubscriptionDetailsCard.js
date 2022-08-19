@@ -13,7 +13,15 @@ const SubscriptionDetailsCard = ({
     subscriptionName="Add name here",
     price=200,
     interval=SUBSCRIPTION_INTERVALS.month,
-    subscriptionDetails=["Add descriptive bullet point text about the subscription here"]
+    subscriptionDetails=[
+        "Self discovery in the art of Ikebana",
+        "Zoom one-on-one sessions with the Master",
+        "Monthly instructional videos, advanced techniques from the Master",
+        "Invitations to annual ikebana events and competitions",
+        "Weekly flower delivery and seasonal themed vases",
+        "Exclusive access to our online community of ikebana enthusiasts",
+        "Includes everything from starter and intermediate"
+    ]
 }) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -44,7 +52,7 @@ const SubscriptionDetailsCard = ({
             data-testid="subscription-card"
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
-            <div>{`$${price} / ${interval}`}</div>
+            <div className="subscriptionPricingAndInterval">{`$${price} / ${interval}`}</div>
             <div className="subscriptionDetailsBulletedList">
             {subscriptionDetails.map((item, i) => {
                 return (
