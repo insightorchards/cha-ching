@@ -5,17 +5,19 @@ import React, { useState } from "react";
 
 const color = "white";
 
-const SubscriptionSelection = (onClick) => {
+const SubscriptionSelection = (onClick = () => {}) => {
   const [onHover, setOnHover] = useState(false);
   return (
     <div className="subscriptionSelectionBackground">
-      <div classname="pageContents">
+      <div className="pageContents">
         <div className="header">Select Your Subscription</div>
         <div className="cards"></div>
         <button
+          aria-label="submit a subscription type"
+          role="button"
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
-          onClick={() => {}}
+          onClick={onClick}
           className="button"
         >
           Select a Subscription Type

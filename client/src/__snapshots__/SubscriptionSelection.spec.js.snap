@@ -6,7 +6,7 @@ exports[`<SubscriptionSelection /> renders correctly 1`] = `
     class="subscriptionSelectionBackground"
   >
     <div
-      classname="pageContents"
+      class="pageContents"
     >
       <div
         class="header"
@@ -16,8 +16,9 @@ exports[`<SubscriptionSelection /> renders correctly 1`] = `
       <div
         class="cards"
       />
-      <div
-        class="submitBar"
+      <button
+        aria-label="submit a subscription type"
+        class="button"
       >
         Select a Subscription Type
         <div
@@ -146,7 +147,7 @@ exports[`<SubscriptionSelection /> renders correctly 1`] = `
             </filter>
           </defs>
         </svg>
-      </div>
+      </button>
       <div
         class="footer"
       />

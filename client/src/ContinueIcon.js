@@ -1,4 +1,4 @@
-const ContinueIcon = ({ color = "white" }) => {
+const ContinueIcon = ({ color }) => {
   console.log(color);
   return (
     <svg
@@ -15,14 +15,14 @@ const ContinueIcon = ({ color = "white" }) => {
           r="25.5"
           transform="rotate(-90 32.5 28.5)"
           stroke={color}
-          stroke-width="6"
-          shape-rendering="crispEdges"
+          strokeWidth="6"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter1_d_248_229)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M13.0234 28.7375L25.5599 41.6488L25.5602 41.6485L28.9359 45.125L44.8484 28.7375L28.9359 12.35L25.5598 15.8269L25.5594 15.8264L13.0234 28.7375ZM25.5598 15.8269L13.0234 28.7375L25.5602 41.6485L38.0967 28.7379L25.5598 15.8269Z"
           fill={color}
         />
@@ -35,9 +35,9 @@ const ContinueIcon = ({ color = "white" }) => {
           width="65"
           height="65"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -70,9 +70,9 @@ const ContinueIcon = ({ color = "white" }) => {
           width="39.8281"
           height="40.7749"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
