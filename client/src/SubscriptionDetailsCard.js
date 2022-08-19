@@ -11,17 +11,9 @@ const SubscriptionDetailsCard = ({
     id,
     selectedCardId,
     subscriptionName="Add name here",
-    price=200,
+    price=0,
     interval=SUBSCRIPTION_INTERVALS.month,
-    subscriptionDetails=[
-        "Self discovery in the art of Ikebana",
-        "Zoom one-on-one sessions with the Master",
-        "Monthly instructional videos, advanced techniques from the Master",
-        "Invitations to annual ikebana events and competitions",
-        "Weekly flower delivery and seasonal themed vases",
-        "Exclusive access to our online community of ikebana enthusiasts",
-        "Includes everything from starter and intermediate"
-    ]
+    subscriptionDetails=["Add description details here"]
 }) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -56,7 +48,6 @@ const SubscriptionDetailsCard = ({
             <div className="subscriptionDetailsBulletedList">
             {subscriptionDetails.map((item, i) => {
                 return (
-                    //TODO: find better method for generating a unique key value
                     <ul className="bulletedListItem" key={i}>
                         <div className="bulletPointIcon">
                             <CircleCheck/>
