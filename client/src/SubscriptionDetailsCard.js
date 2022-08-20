@@ -20,7 +20,7 @@ const SubscriptionDetailsCard = ({
 
     const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
     const determineCardWasSelected = () => {
-        if(id != undefined && selectedCardId != undefined){
+        if(id !== undefined && selectedCardId !== undefined){
             if(id === selectedCardId){ setSelected(true) }
         }
     };
