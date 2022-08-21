@@ -3,12 +3,43 @@ import ContinueIcon from "./ContinueIcon.js";
 import HSpacer from "./HSpacer";
 import React, { useState } from "react";
 import SubscriptionDetailsCard from "./SubscriptionDetailsCard";
+import { useNavigate } from "react-router-dom";
 
 const color = "white";
-// selectedCardId,
 const SubscriptionSection = () => {
   const [onHover, setOnHover] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(false);
+  const [subscriptionType, setSubscriptionType] = useState("starter");
+  const [subscriptionPrice, setSubscriptionPrice] = useState(55);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: `${subscriptionType} diy ikebana`,
+        amount: subscriptionPrice,
+      }),
+    };
+
+    fetch(
+      `${process.env.REACT_APP_API_BASE_URL}/create-incomplete-subscription`,
+      requestOptions,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        navigate("/checkout", {
+          state: {
+            clientSecret: data.latest_invoice.payment_intent.client_secret,
+            subscriptionType: subscriptionType,
+            subscriptionPrice: subscriptionPrice,
+          },
+        });
+      })
+      .catch((err) => console.log("error creating product:", err));
+  }
 
   return (
     <div className="subscriptionSectionBackground">
@@ -28,7 +59,11 @@ const SubscriptionSection = () => {
               "Includes initial starter kit (kenzan, vase, scissors)",
               "Small group sessions with other advancing peers"
             ]}
-            onClick={() => setSelectedCardId("starter")}
+            onClick={() => {
+              setSelectedCardId("starter")
+              setSubscriptionType("starter")
+              setSubscriptionPrice(55)
+            }}
           />
           <SubscriptionDetailsCard
             id={"intermediate"}
@@ -42,7 +77,11 @@ const SubscriptionSection = () => {
               "Includes initial starter kit (kenzen, vase, scissors)",
               "Syllabus of recommended readings",
             ]}
-            onClick={() => setSelectedCardId("intermediate")}
+            onClick={() => {
+              setSelectedCardId("intermediate")
+              setSubscriptionType("intermediate")
+              setSubscriptionPrice(115)
+            }}
           />
           <SubscriptionDetailsCard
             id={"master"}
@@ -58,7 +97,11 @@ const SubscriptionSection = () => {
               "Exclusive access to our online community of ikebana enthusiasts",
               "Includes everything from starter and intermediate"
             ]}
-            onClick={() => setSelectedCardId("master")}
+            onClick={() => {
+              setSelectedCardId("master")
+              setSubscriptionType("master")
+              setSubscriptionPrice(205)
+            }}
           />
         </div>
         <button
@@ -67,6 +110,7 @@ const SubscriptionSection = () => {
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
           className="button"
+          onClick={() => handleSubmit()}
         >
           Select a Subscription Type
           <HSpacer />
