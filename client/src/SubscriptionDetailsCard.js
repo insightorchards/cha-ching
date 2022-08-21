@@ -20,20 +20,20 @@ const SubscriptionDetailsCard = ({
 
     const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
     const determineCardWasSelected = () => {
-        if(id !== undefined && selectedCardId !== undefined){
-            if(id === selectedCardId){ setSelected(true) }
+        if (id !== undefined && selectedCardId !== undefined) {
+            if (id === selectedCardId) { setSelected(true) }
         }
     };
 
     useEffect(() => {
         determineCardWasSelected()
-        if(id !== selectedCardId){ setSelected(false) }
+        if (id !== selectedCardId) { setSelected(false) }
     }, [ selected ])
 
     const determineStylingBasedOnUserAction = () => {
-        if(hovered && !selected) { return "hoveredStyling" }
-        if(selected) { return "selectedStyling" }
-        if(!hovered && !selected) { return ""}
+        if (hovered && !selected) { return "hovered" }
+        if (selected) { return "selected" }
+        if (!hovered && !selected) { return ""}
     };
 
     return(
@@ -41,21 +41,23 @@ const SubscriptionDetailsCard = ({
             className={`${determineStylingBasedOnUserAction()} container`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            data-testid="subscription-card"
+            role="subscription-card"
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
             <div className="subscriptionPricingAndInterval">{`$${price} / ${interval}`}</div>
             <div className="subscriptionDetailsBulletedList">
-            {subscriptionDetails.map((item, i) => {
-                return (
-                    <ul className="bulletedListItem" key={i}>
-                        <div className="bulletPointIcon">
-                            <CircleCheck/>
-                        </div>
-                        <li className="bulletPointText" key={i}>{item}</li>
-                    </ul>
-                )
-            })}
+            {
+                subscriptionDetails.map((item, i) => {
+                    return (
+                        <ul className="bulletedListItem" key={i}>
+                            <div className="bulletPointIcon">
+                                <CircleCheck/>
+                            </div>
+                            <li className="bulletPointText" key={i}>{item}</li>
+                        </ul>
+                    )
+                })
+            }
 
             </div>
         </div>

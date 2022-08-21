@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.ZenBlossomTextContainer {
+.zenBlossomTextContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   z-index: 1;
 }
 
-.ZenBlossomText {
+.zenBlossomText {
   font-family: "Rosmatika";
   font-size: 80px;
   text-shadow: 4px 1px white;

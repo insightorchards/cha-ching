@@ -5,18 +5,29 @@ describe("SubscriptionDetailsCard", () => {
     describe("highlight styling renders correctly", () => {
         it("does not display highlight given 'id' and 'selectedCardId' props are not passed", () => {
             render(<SubscriptionDetailsCard/>)
-            expect(screen.getByTestId("subscription-card")).not.toHaveClass("selectedStyling");
+            expect(screen.getByRole("subscription-card")).not.toHaveClass("selected");
         })
         it("displays highlight when selected is true", () => {
             render(<SubscriptionDetailsCard id={0} selectedCardId={0} />)
-            expect(screen.getByTestId("subscription-card")).toHaveClass("selectedStyling");
+            expect(screen.getByRole("subscription-card")).toHaveClass("selected");
         })
         it("does not display hightlight if card is not selected", () => {
             render(<SubscriptionDetailsCard id={1} selectedCardId={0} />)
-            expect(screen.getByTestId("subscription-card")).not.toHaveClass("selectedStyling");
+            expect(screen.getByRole("subscription-card")).not.toHaveClass("selected");
         })
     })
     describe("displays card content correctly", () => {
+        it("renders correctly", () => {
+            const component = render(
+                <SubscriptionDetailsCard
+                    subscriptionName="starter"
+                    subscriptionDetails={["daily flower delivery", "scissors", "kenzan"]}
+                    price="200"
+                    interval="monthly"
+                />
+            )
+            expect(component.asFragment()).toMatchSnapshot()
+        })
         it("displays subscription header", () => {
             render(<SubscriptionDetailsCard subscriptionName="starter"/>)
             expect(screen.getByText("Starter")).toBeVisible();

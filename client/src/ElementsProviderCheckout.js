@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 import { renderIf } from "./utils";
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
-console.log("process.env.REACT_APP_PUBLIC_STRIPE_KEY", process.env.REACT_APP_PUBLIC_STRIPE_KEY)
 const ElementsProviderCheckout = () => {
   const isEmpty = (object) => Object.keys(object).length === 0;
   const { state: options = {} } = useLocation();

@@ -11,12 +11,12 @@
     width: 20vw;
 }
 
-.hoveredStyling {
+.hovered {
     border: 1px solid #FFFFFF;
     box-shadow: inset 1px 0 20px 5px white;
 }
 
-.selectedStyling {
+.selected {
     border: 1px solid #FFFFFF;
     box-shadow: inset 1px 0 70px 20px white;
 }
@@ -70,5 +70,5 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 16.1857px;
+    font-size: 17px;
 }
