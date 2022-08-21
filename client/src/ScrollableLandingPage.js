@@ -3,6 +3,7 @@ import BambooInkPainting from "./BambooInkPainting";
 import Hero from "./Hero";
 import SubscriptionPage from "./SubscriptionPage";
 import Chevron from "./Chevron";
+import SubscriptionSection from "./SubscriptionSection";
 
 function ScrollableLandingPage() {
   return (
@@ -17,6 +18,7 @@ function ScrollableLandingPage() {
         </div>
       </div>
       <SubscriptionPage />
+      <SubscriptionSection />
     </div>
   );
 }

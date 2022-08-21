@@ -1,5 +1,4 @@
 const ContinueIcon = ({ color }) => {
-  console.log(color);
   return (
     <svg
       width="65"

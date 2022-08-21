@@ -6,7 +6,7 @@
   font-family: "Inter-Bold";
   src: url("Inter-Bold.ttf");
 }
-.subscriptionSelectionBackground {
+.subscriptionSectionBackground {
   background-image: url("./goldenflower.jpg");
   background-position: no-repeat;
   background-size: cover;
@@ -39,6 +39,7 @@
 }
 
 .button {
+  /* TODO look at transition working for the ContinueIcon */
   /* transition-duration: 0.4s; */
   align-items: center;
   background-color: #e4987c;
