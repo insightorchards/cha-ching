@@ -13,7 +13,8 @@ const SubscriptionDetailsCard = ({
     subscriptionName="Add name here",
     price=0,
     interval=SUBSCRIPTION_INTERVALS.month,
-    subscriptionDetails=["Add description details here"]
+    subscriptionDetails=["Add description details here"],
+    onClick=() => {}
 }) => {
     const [hovered, setHovered] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -28,7 +29,7 @@ const SubscriptionDetailsCard = ({
     useEffect(() => {
         determineCardWasSelected()
         if (id !== selectedCardId) { setSelected(false) }
-    }, [ selected ])
+    }, [ selected, selectedCardId ])
 
     const determineStylingBasedOnUserAction = () => {
         if (hovered && !selected) { return "hovered" }
@@ -42,6 +43,7 @@ const SubscriptionDetailsCard = ({
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             role="subscription-card"
+            onClick={onClick}
         >
             <div className="subscriptionName">{capitalize(subscriptionName)}</div>
             <div className="subscriptionPricingAndInterval">{`$${price} / ${interval}`}</div>

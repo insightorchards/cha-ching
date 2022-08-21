@@ -5,15 +5,19 @@ import React, { useState } from "react";
 import SubscriptionDetailsCard from "./SubscriptionDetailsCard";
 
 const color = "white";
-
+// selectedCardId,
 const SubscriptionSection = () => {
   const [onHover, setOnHover] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState(false);
+
   return (
     <div className="subscriptionSectionBackground">
       <div className="pageContents">
         <div className="header">Select Your Subscription</div>
         <div className="cards">
           <SubscriptionDetailsCard
+            id={"starter"}
+            selectedCardId={selectedCardId}
             subscriptionName="Starter"
             price={55}
             subscriptionDetails={[
@@ -24,8 +28,11 @@ const SubscriptionSection = () => {
               "Includes initial starter kit (kenzan, vase, scissors)",
               "Small group sessions with other advancing peers"
             ]}
+            onClick={() => setSelectedCardId("starter")}
           />
           <SubscriptionDetailsCard
+            id={"intermediate"}
+            selectedCardId={selectedCardId}
             subscriptionName="Intermediate"
             price={115}
             subscriptionDetails={[
@@ -35,8 +42,11 @@ const SubscriptionSection = () => {
               "Includes initial starter kit (kenzen, vase, scissors)",
               "Syllabus of recommended readings",
             ]}
+            onClick={() => setSelectedCardId("intermediate")}
           />
           <SubscriptionDetailsCard
+            id={"master"}
+            selectedCardId={selectedCardId}
             subscriptionName="Master"
             price={205}
             subscriptionDetails={[
@@ -48,6 +58,7 @@ const SubscriptionSection = () => {
               "Exclusive access to our online community of ikebana enthusiasts",
               "Includes everything from starter and intermediate"
             ]}
+            onClick={() => setSelectedCardId("master")}
           />
         </div>
         <button
