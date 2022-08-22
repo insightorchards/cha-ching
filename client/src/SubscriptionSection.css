@@ -2,10 +2,12 @@
   font-family: "Inter-Thin";
   src: url("Inter-Thin.ttf");
 }
+
 @font-face {
   font-family: "Inter-Bold";
   src: url("Inter-Bold.ttf");
 }
+
 .subscriptionSectionBackground {
   background-image: url("./goldenflower.jpg");
   background-position: no-repeat;
@@ -15,27 +17,25 @@
   height: 100vh;
   width: 100vw;
 }
+
 .pageContents {
   display: flex;
   justify-content: center;
   flex-direction: column;
   position: relative;
 }
+
 .header {
   font-family: "Inter-Thin";
   font-size: 73px;
   font-style: italic;
   font-weight: 400;
 }
+
 .cards {
-  align-items: center;
-  background-color: white;
-  bottom: 0;
   display: flex;
-  height: 80vh;
   justify-content: center;
   margin: auto;
-  width: 80vw;
 }
 
 .button {
