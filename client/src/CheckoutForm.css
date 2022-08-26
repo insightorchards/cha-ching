@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.header {
+.checkoutFormHeader {
   color: #42434d;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
@@ -95,4 +95,10 @@
 
 .submitButton:hover {
   color: #feccd7;
+}
+
+@media (max-width: 660px) {
+  .paymentForm {
+    width: auto;
+  }
 }
