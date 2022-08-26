@@ -11,12 +11,10 @@ const SubscriptionPage = () => {
           <div className="title">
             Immersive Mindfulness Experience in Flowers, Sound, and Light
           </div>
-          <VSpacer factor={5} />
           <div className="subtitle">
             world class education in traditional ikabana no matter where you
             are!
           </div>
-          <VSpacer factor={5} />
           <div className="description">
             We believe interaction with flowers is very important to experience
             a whole and calm mind. A flowers temporal nature reflects our own,
@@ -32,7 +30,6 @@ const SubscriptionPage = () => {
             composed and arranged by our own artists. An ancient tradition in
             mindfulness meets a full media experience in beautitude.
           </div>
-          <VSpacer factor={7} />
           <button className="submitButtonSubscriptionPage" onClick={() => {}}>
             Free Ikebana Handbook
           </button>
