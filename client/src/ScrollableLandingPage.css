@@ -25,3 +25,9 @@
   right: 50px;
   width: 120px;
 }
+
+@media (max-width: 666px) {
+  .bambooInkPaintingWrapper {
+    display: none;
+  }
+}
