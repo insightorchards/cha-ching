@@ -97,6 +97,10 @@
   color: #feccd7;
 }
 
+/* 
+  TODO: bring submit button outside
+  the form for mobile since error state ends up pushing it down in a weird way
+*/
 @media (max-width: 660px) {
   .paymentForm {
     width: auto;
