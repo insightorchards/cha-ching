@@ -10,7 +10,8 @@ const SubscriptionSection = () => {
   const [onHover, setOnHover] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(false);
   const [subscriptionType, setSubscriptionType] = useState("starter");
-  const [subscriptionPrice, setSubscriptionPrice] = useState(55);
+  const [subscriptionPriceText, setSubscriptionPriceText] = useState("55");
+  const [stripeSubscriptionPrice, setStripeSubscriptionPrice] = useState(5500);
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ const SubscriptionSection = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionPrice,
+        amount: stripeSubscriptionPrice,
       }),
     };
 
@@ -34,7 +35,7 @@ const SubscriptionSection = () => {
           state: {
             clientSecret: data.latest_invoice.payment_intent.client_secret,
             subscriptionType: subscriptionType,
-            subscriptionPrice: subscriptionPrice,
+            subscriptionPrice: subscriptionPriceText,
           },
         });
       })
@@ -50,7 +51,7 @@ const SubscriptionSection = () => {
             id={"starter"}
             selectedCardId={selectedCardId}
             subscriptionName="Starter"
-            price={55}
+            price={"55"}
             subscriptionDetails={[
               "Group classes with apprentice and intermediate instructors",
               "Weekly instructional videos",
@@ -62,14 +63,15 @@ const SubscriptionSection = () => {
             onClick={() => {
               setSelectedCardId("starter")
               setSubscriptionType("starter")
-              setSubscriptionPrice(55)
+              setSubscriptionPriceText("55")
+              setStripeSubscriptionPrice(5500)
             }}
           />
           <SubscriptionDetailsCard
             id={"intermediate"}
             selectedCardId={selectedCardId}
             subscriptionName="Intermediate"
-            price={115}
+            price={"115"}
             subscriptionDetails={[
               "Exclusive access to our online community of ikebana enthusiasts",
               "Weekly step-by-step video tutorials and instructional pamphlets",
@@ -80,14 +82,15 @@ const SubscriptionSection = () => {
             onClick={() => {
               setSelectedCardId("intermediate")
               setSubscriptionType("intermediate")
-              setSubscriptionPrice(115)
+              setSubscriptionPriceText("115")
+              setStripeSubscriptionPrice(11500)
             }}
           />
           <SubscriptionDetailsCard
             id={"master"}
             selectedCardId={selectedCardId}
             subscriptionName="Master"
-            price={205}
+            price={"205"}
             subscriptionDetails={[
               "Self discovery in the art of Ikebana",
               "Zoom one-on-one sessions with the Master",
@@ -100,7 +103,8 @@ const SubscriptionSection = () => {
             onClick={() => {
               setSelectedCardId("master")
               setSubscriptionType("master")
-              setSubscriptionPrice(205)
+              setSubscriptionPriceText("205")
+              setStripeSubscriptionPrice(20500)
             }}
           />
         </div>
