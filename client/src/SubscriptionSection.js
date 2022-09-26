@@ -36,8 +36,7 @@ const SubscriptionSection = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: `${subscriptionType} diy ikebana`,
-        amount: stripeSubscriptionPrice,
+        priceId: stripePriceId
       }),
     };
 
