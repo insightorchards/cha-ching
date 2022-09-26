@@ -26,16 +26,17 @@
 }
 
 .header {
+  display: flex;
   font-family: "Inter-Thin";
   font-size: 73px;
   font-style: italic;
-  font-weight: 400;
+  justify-content: center;
+  padding: 20px 0 20px 0;
 }
 
 .cards {
   display: flex;
   justify-content: center;
-  margin: auto;
 }
 
 .button {
@@ -69,3 +70,25 @@
   height: 15vh;
   width: 100vw;
 }
+
+@media (max-width: 660px) {
+  .subscriptionSectionBackground {
+    height: 200%;
+  }
+
+  .header {
+    font-size: 32px;
+    font-weight: 600;
+    display: flex;
+    padding: 20px 0 20px 0;
+  }
+  .cards {
+    flex-direction: column;
+    margin: 0 20px 0 20px;
+  }
+
+  .button {
+    font-size: 20px;
+  }
+}
+
