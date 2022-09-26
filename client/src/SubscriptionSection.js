@@ -15,22 +15,21 @@ const SubscriptionSection = () => {
   const [stripePriceId, setStripePriceId] = useState(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
   const navigate = useNavigate();
 
-  // useEffect(() => {
-    // switch(subscriptionType) {
-    //   case "starter": {
-    //     setStripePriceId(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
-    //   }
-    //   case "intermediate": {
-    //     setStripePriceId(process.env.REACT_APP_INTERMEDIATE_STRIPE_PRICE_ID)
-    //   }
-    //   case "master": {
-    //     setStripePriceId(process.env.REACT_APP_ADVANCED_STRIPE_PRICE_ID)
-    //   }
-    // }
-
-  //   if subscriptionType
-  // },[subscriptionType])
-  console.log("stripePriceId", stripePriceId)
+  useEffect(() => {
+    switch(subscriptionType) {
+      case "starter": 
+        setStripePriceId(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID);
+        break;
+      case "intermediate":
+        setStripePriceId(process.env.REACT_APP_INTERMEDIATE_STRIPE_PRICE_ID);
+        break;
+      case "master":
+        setStripePriceId(process.env.REACT_APP_ADVANCED_STRIPE_PRICE_ID);
+      break;
+      default:
+        setStripePriceId(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
+    }
+  },[subscriptionType])
 
   const handleSubmit = () => {
     const requestOptions = {
