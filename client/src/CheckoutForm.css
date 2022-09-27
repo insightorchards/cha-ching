@@ -85,12 +85,16 @@
 }
 
 .submitButton {
+  align-items: center;
   background-color: #9d9d9d;
   border-radius: 8px;
   color: white;
   cursor: pointer;
-  padding: 10px 25px;
+  display: flex;
   font-weight: bold;
+  height: 40px;
+  justify-content: center;
+  width: 150px;
 }
 
 .submitButton:hover {

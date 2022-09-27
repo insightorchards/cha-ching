@@ -23,7 +23,7 @@ const SubscriptionSection = () => {
       case "intermediate":
         setStripePriceId(process.env.REACT_APP_INTERMEDIATE_STRIPE_PRICE_ID);
         break;
-      case "master":
+      case "advanced":
         setStripePriceId(process.env.REACT_APP_ADVANCED_STRIPE_PRICE_ID);
       break;
       default:
@@ -102,22 +102,21 @@ const SubscriptionSection = () => {
             }}
           />
           <SubscriptionDetailsCard
-            id={"master"}
+            id={"advanced"}
             selectedCardId={selectedCardId}
-            subscriptionName="Master"
+            subscriptionName="Advanced"
             price={"205"}
             subscriptionDetails={[
-              "Self discovery in the art of Ikebana",
-              "Zoom one-on-one sessions with the Master",
-              "Monthly instructional videos, advanced techniques from the Master",
+              "Zoom one-on-one sessions with a Master",
+              "Monthly instructional videos, advanced techniques from a Master",
               "Invitations to annual ikebana events and competitions",
               "Weekly flower delivery and Seasonal themed vases",
               "Exclusive access to our online community of ikebana enthusiasts",
               "Includes everything from starter and intermediate"
             ]}
             onClick={() => {
-              setSelectedCardId("master")
-              setSubscriptionType("master")
+              setSelectedCardId("advanced")
+              setSubscriptionType("advanced")
               setSubscriptionPriceText("205")
               setStripeSubscriptionPrice(20500)
             }}
