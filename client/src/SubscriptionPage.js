@@ -1,4 +1,3 @@
-import VSpacer from "./VSpacer";
 import "./SubscriptionButton.css";
 import "./SubscriptionPage.css";
 
@@ -16,15 +15,7 @@ const SubscriptionPage = () => {
             are!
           </div>
           <div className="description">
-            We believe interaction with flowers is very important to experience
-            a whole and calm mind. The Japanese Art of Ikebana means to
-            animate flowers into life. It’s a 600 year old tradition about the
-            art of flower arrangements. We want to bring this mindful practice
-            to the greater world by making it accessible through online training
-            that feels just like you're with a master in Japan. Pick your
-            Ikebana box subscription, receive guided ikebana sessions,
-            accompanied musical arrangements, and virtual demonstrations
-            composed and arranged by our own artists.
+            We believe interaction with flowers is very important to experience a whole and calm mind. A flowers temporal nature reflects our own, and through the appreciation of its beauty, it mirrors ones own inner nature… Though the flower is ephemeral, its beauty goes on forever inside of the mind. The Japanese Art of Ikebana means to animate flowers into life. It’s a 600 year old tradition about the art of flower arrangements. We want to bring this mindful practice to the greater world by making it accessible through online training that feels just like you're with a master in Japan. Pick your Ikebana box subscription, receive guided ikebana sessions, accompanied musical arrangements, and virtual demonstrations composed and arranged by our own artists.
           </div>
           <button className="submitButtonSubscriptionPage" onClick={() => {}}>
             Free Ikebana Handbook

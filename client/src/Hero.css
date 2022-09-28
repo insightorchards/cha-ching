@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.zenBlossomTextContainer {
+.heroHeaderContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   z-index: 1;
 }
 
-.zenBlossomText {
+.heroHeader {
   font-family: "Rosmatika";
   font-size: 80px;
   text-shadow: 4px 1px white;
@@ -42,20 +42,14 @@
   width: 100vw;
 }
 
-@media (max-width: 666px) {
+@media (max-width: 660px) {
   .heroPageWrapper {
     background-color: green;
   }
   .heroImage {
     background-size: cover;
   }
-  .zenBlossomText {
+  .heroHeader {
     font-size: 50px;
   }
-  /* .nameText,
-  .date,
-  .postedText, */
-  /* .spacer {
-    display: none;
-  } */
 }

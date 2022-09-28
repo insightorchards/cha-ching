@@ -1,7 +1,7 @@
 import "./SubscriptionSection.css";
 import ContinueIcon from "./ContinueIcon.js";
 import HSpacer from "./HSpacer";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SubscriptionDetailsCard from "./SubscriptionDetailsCard";
 import { useNavigate } from "react-router-dom";
 
