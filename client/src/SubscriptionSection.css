@@ -26,21 +26,20 @@
 }
 
 .header {
+  display: flex;
   font-family: "Inter-Thin";
   font-size: 73px;
   font-style: italic;
-  font-weight: 400;
+  justify-content: center;
+  padding: 20px 0 20px 0;
 }
 
 .cards {
   display: flex;
   justify-content: center;
-  margin: auto;
 }
 
 .button {
-  /* TODO look at transition working for the ContinueIcon */
-  /* transition-duration: 0.4s; */
   align-items: center;
   background-color: #e4987c;
   border-radius: 0;
@@ -69,3 +68,25 @@
   height: 15vh;
   width: 100vw;
 }
+
+@media (max-width: 660px) {
+  .subscriptionSectionBackground {
+    height: 200%;
+  }
+
+  .header {
+    display: flex;
+    font-size: 32px;
+    font-weight: 600;
+    padding: 20px 0 20px 0;
+  }
+  .cards {
+    flex-direction: column;
+    margin: 0 20px 0 20px;
+  }
+
+  .button {
+    font-size: 20px;
+  }
+}
+

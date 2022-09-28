@@ -38,7 +38,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: 400;
-  padding: 0 0 20px 0;
+  padding: 0 0 30px 0;
   z-index: 1;
 }
 
@@ -47,11 +47,13 @@
   font-size: 30px;
   font-style: italic;
   font-weight: 100;
+  padding: 0 0 60px 0;
 }
 
 .description {
   line-height: 42px;
   font-size: 24px;
+  padding: 0 0 60px 0;
 }
 
 .submitButtonSubscriptionPage {
@@ -67,4 +69,44 @@
 
 .submitButtonSubscriptionPage:hover {
   background-color: white;
+}
+
+@media (max-width: 660px) {
+  .contentContainer {
+    margin: 10px 25px 25px 25px;
+    width: auto;
+  }
+  .backgroundIkebanaImage {
+    background-size: cover;
+    width: 100vw;
+  }
+  .title {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+  .subtitle {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  .description {
+    line-height: 23px;
+    font-size: 18px;
+    background: rgba(255, 226, 223, 0.09);
+    color: rgb(225, 223, 223);
+    padding: 5px;
+    border-radius: 8px;
+    backdrop-filter: blur(15px);
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  .background {
+    display: flex;
+    background-color: none;
+    justify-content:center;
+  }
+  .submitButtonSubscriptionPage {
+    width: 100%;
+    font-size: 18px;
+  }
+
 }

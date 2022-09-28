@@ -1,7 +1,7 @@
 import "./SubscriptionSection.css";
 import ContinueIcon from "./ContinueIcon.js";
 import HSpacer from "./HSpacer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SubscriptionDetailsCard from "./SubscriptionDetailsCard";
 import { useNavigate } from "react-router-dom";
 
@@ -10,17 +10,33 @@ const SubscriptionSection = () => {
   const [onHover, setOnHover] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(false);
   const [subscriptionType, setSubscriptionType] = useState("starter");
-  const [subscriptionPrice, setSubscriptionPrice] = useState(55);
-
+  const [subscriptionPriceText, setSubscriptionPriceText] = useState("55");
+  const [stripeSubscriptionPrice, setStripeSubscriptionPrice] = useState(5500);
+  const [stripePriceId, setStripePriceId] = useState(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
   const navigate = useNavigate();
+
+  useEffect(() => {
+    switch(subscriptionType) {
+      case "starter": 
+        setStripePriceId(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID);
+        break;
+      case "intermediate":
+        setStripePriceId(process.env.REACT_APP_INTERMEDIATE_STRIPE_PRICE_ID);
+        break;
+      case "advanced":
+        setStripePriceId(process.env.REACT_APP_ADVANCED_STRIPE_PRICE_ID);
+      break;
+      default:
+        setStripePriceId(process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
+    }
+  },[subscriptionType])
 
   const handleSubmit = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: `${subscriptionType} diy ikebana`,
-        amount: subscriptionPrice,
+        priceId: stripePriceId
       }),
     };
 
@@ -34,7 +50,7 @@ const SubscriptionSection = () => {
           state: {
             clientSecret: data.latest_invoice.payment_intent.client_secret,
             subscriptionType: subscriptionType,
-            subscriptionPrice: subscriptionPrice,
+            subscriptionPrice: subscriptionPriceText,
           },
         });
       })
@@ -50,7 +66,7 @@ const SubscriptionSection = () => {
             id={"starter"}
             selectedCardId={selectedCardId}
             subscriptionName="Starter"
-            price={55}
+            price={"55"}
             subscriptionDetails={[
               "Group classes with apprentice and intermediate instructors",
               "Weekly instructional videos",
@@ -62,14 +78,15 @@ const SubscriptionSection = () => {
             onClick={() => {
               setSelectedCardId("starter")
               setSubscriptionType("starter")
-              setSubscriptionPrice(55)
+              setSubscriptionPriceText("55")
+              setStripeSubscriptionPrice(5500)
             }}
           />
           <SubscriptionDetailsCard
             id={"intermediate"}
             selectedCardId={selectedCardId}
             subscriptionName="Intermediate"
-            price={115}
+            price={"115"}
             subscriptionDetails={[
               "Exclusive access to our online community of ikebana enthusiasts",
               "Weekly step-by-step video tutorials and instructional pamphlets",
@@ -80,27 +97,28 @@ const SubscriptionSection = () => {
             onClick={() => {
               setSelectedCardId("intermediate")
               setSubscriptionType("intermediate")
-              setSubscriptionPrice(115)
+              setSubscriptionPriceText("115")
+              setStripeSubscriptionPrice(11500)
             }}
           />
           <SubscriptionDetailsCard
-            id={"master"}
+            id={"advanced"}
             selectedCardId={selectedCardId}
-            subscriptionName="Master"
-            price={205}
+            subscriptionName="Advanced"
+            price={"205"}
             subscriptionDetails={[
-              "Self discovery in the art of Ikebana",
-              "Zoom one-on-one sessions with the Master",
-              "Monthly instructional videos, advanced techniques from the Master",
+              "Zoom one-on-one sessions with a Master",
+              "Monthly instructional videos, advanced techniques from a Master",
               "Invitations to annual ikebana events and competitions",
               "Weekly flower delivery and Seasonal themed vases",
               "Exclusive access to our online community of ikebana enthusiasts",
               "Includes everything from starter and intermediate"
             ]}
             onClick={() => {
-              setSelectedCardId("master")
-              setSubscriptionType("master")
-              setSubscriptionPrice(205)
+              setSelectedCardId("advanced")
+              setSubscriptionType("advanced")
+              setSubscriptionPriceText("205")
+              setStripeSubscriptionPrice(20500)
             }}
           />
         </div>

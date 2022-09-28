@@ -45,7 +45,7 @@ function CheckoutForm() {
 
   return (
     <div className="checkoutFormBackground">
-      <div className="header">
+      <div className="checkoutFormHeader">
         {`${capitalize(subscriptionType)} Subscription`}
       </div>
       <div className="price">{`$${subscriptionPrice} / mo`}</div>
