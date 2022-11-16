@@ -9,7 +9,7 @@ A virtual payment method between a web application and a customer/user to allow 
 - Stripe SDK
 - Jest, supertest, and testing-library/react
 
-## Developing
+# Developing
 
 ### Setting up Stripe
 
@@ -68,3 +68,23 @@ git push heroku-client `git subtree split --prefix client main`:main --force
 git push heroku main
 
 ```
+
+#### Deployed site
+https://flora-denbo.herokuapp.com/ 
+
+# Current UI
+
+##### Landing page
+![image](https://user-images.githubusercontent.com/50315144/202252727-68a6f8ac-5ff0-4283-864c-877dcac5de76.png)
+
+##### About page
+![image](https://user-images.githubusercontent.com/50315144/202252936-45e571d6-da29-4861-a442-83104f02c121.png)
+
+##### Subscription selection page
+![image](https://user-images.githubusercontent.com/50315144/202252302-87964e24-d07b-40fb-a77a-5fe9ca040d90.png)
+
+##### Card payment page
+![image](https://user-images.githubusercontent.com/50315144/202253411-1df34dc1-0394-4673-9d83-9d326c55cd47.png)
+
+##### Successful payment stored in Stripe account
+![image](https://user-images.githubusercontent.com/50315144/202254653-e15bd253-e6fb-4c37-b24f-fbf0b5e91c0c.png)
