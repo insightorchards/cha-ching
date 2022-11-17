@@ -69,9 +69,6 @@ git push heroku main
 
 ```
 
-#### Deployed site
-https://flora-denbo.herokuapp.com/ 
-
 # Current UI
 
 ##### Landing page
