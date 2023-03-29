@@ -107,7 +107,7 @@ app.post("/payment-intent", async (req, res, next) => {
 // how do I get enforce signature to take in enforceSignature(_signatureObject, req, res, next, errorStacker)
 const enforceSignature = (req, res, next) => {
   console.log(
-    "WIP, continue investigation into error handling with middleware",
+    "WIP, continue investigation into error handling with middleware"
   );
   next();
   // // if(req.headers.type !== json) error handling call an errorStack() function or something
