@@ -46,7 +46,6 @@ const SubscriptionSection = () => {
         }
       )
       .then((response) => {
-        console.log(response);
         navigate("/checkout", {
           state: {
             clientSecret:
