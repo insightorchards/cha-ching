@@ -6,7 +6,7 @@ exports[`renders 1`] = `
     class="checkoutFormBackground"
   >
     <div
-      class="header"
+      class="checkoutFormHeader"
     >
       Super Deluxe VIP Subscription
     </div>

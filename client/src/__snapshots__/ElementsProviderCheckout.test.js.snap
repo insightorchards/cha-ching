@@ -22,7 +22,7 @@ exports[`<ElementsProviderCheckout/> renders Loading when options are undefined 
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="lds-ellipsis"
+    class="ldsEllipsis"
     role="alert"
   >
     <div />
@@ -39,7 +39,7 @@ exports[`<ElementsProviderCheckout/> renders payment form when clientSecret is p
     class="checkoutFormBackground"
   >
     <div
-      class="header"
+      class="checkoutFormHeader"
     >
        Subscription
     </div>
