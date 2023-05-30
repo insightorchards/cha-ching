@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-incomplete-subscription", async (req, res) => {
+  console.log("SECRET_STRIPE_KEY from app env:", process.env.SECRET_STRIPE_KEY)
   const customer = await stripe.customers.create({});
 
   const subscription = await stripe.subscriptions.create({

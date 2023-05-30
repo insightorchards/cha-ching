@@ -17,7 +17,7 @@ const SubscriptionSection = () => {
     process.env.REACT_APP_STARTER_STRIPE_PRICE_ID
   );
   const navigate = useNavigate();
-
+  console.log("process.env.REACT_APP_STARTER_STRIPE_PRICE_ID", process.env.REACT_APP_STARTER_STRIPE_PRICE_ID)
   useEffect(() => {
     switch (subscriptionType) {
       case "starter":
@@ -35,9 +35,11 @@ const SubscriptionSection = () => {
   }, [subscriptionType]);
 
   const handleSubmit = () => {
+    console.log("posting via axios")
+    console.log({stripePriceId})
     axios
       .post(
-        `${process.env.REACT_APP_API_BASE_URL}/create-incomplete-subscription`,
+        `http://localhost:3001/create-incomplete-subscription`,
         {
           priceId: stripePriceId,
         },
